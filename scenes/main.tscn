@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bk6t264rb0pvy"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_bv2ka"]
+[ext_resource type="PackedScene" uid="uid://dr1x22kdg8oeb" path="res://scenes/ui/main_menu.tscn" id="2_dpg5r"]
+[ext_resource type="AudioStream" uid="uid://jy1wcbpiriw3" path="res://assets/audio/Zero Fall.ogg" id="3_csc35"]
+[ext_resource type="PackedScene" uid="uid://c0h6perk438yr" path="res://scenes/ui/pause.tscn" id="4_chokm"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_bv2ka")
+
+[node name="Level" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("2_dpg5r")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_csc35")
+autoplay = true
+bus = &"Music"
+
+[node name="Pause" parent="." instance=ExtResource("4_chokm")]

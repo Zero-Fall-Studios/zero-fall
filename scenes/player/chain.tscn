@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://l0xfa6mufnom"]
+
+[ext_resource type="Script" path="res://scenes/player/grapple.gd" id="1_vnw4y"]
+[ext_resource type="Texture2D" uid="uid://bad6gd7jdt1b5" path="res://assets/player/Links.png" id="2_pniio"]
+[ext_resource type="Texture2D" uid="uid://b5b2pi7s3dxec" path="res://assets/player/Tip.png" id="3_42fnh"]
+[ext_resource type="AudioStream" uid="uid://5rjncxcrsqh6" path="res://assets/audio/laserShoot (1).wav" id="4_70rgc"]
+[ext_resource type="AudioStream" uid="uid://ci6ks65mqxnfq" path="res://assets/audio/grapple_stick.wav" id="5_i71po"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wt525"]
+radius = 2.0
+height = 11.0
+
+[node name="Chain" type="Node2D" node_paths=PackedStringArray("grapple_shoot_audio", "grapple_stick_audio")]
+script = ExtResource("1_vnw4y")
+grapple_shoot_audio = NodePath("GrappleShootAudioPlayer")
+grapple_stick_audio = NodePath("GrappleStickAudioPlayer")
+
+[node name="Links" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 16)
+texture = ExtResource("2_pniio")
+centered = false
+offset = Vector2(-8, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 128)
+
+[node name="Tip" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Hook" type="Sprite2D" parent="Tip"]
+texture = ExtResource("3_42fnh")
+offset = Vector2(0, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tip"]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_wt525")
+
+[node name="GrappleShootAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_70rgc")
+
+[node name="GrappleStickAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_i71po")
