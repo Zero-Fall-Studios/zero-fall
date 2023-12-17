@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1702850747
+::res://::1702851021
 default_bus_layout.tres::AudioBusLayout::8351554488068180333::1687405277::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1702850726::0::1::::<><>::
 README.md::TextFile::-1::1676015438::0::1::::<><>::
@@ -167,18 +167,18 @@ FunMetalSet.png::CompressedTexture2D::6276880843012044105::1688348786::168834879
 Target.png::CompressedTexture2D::7393232180077435207::1687560899::1687560901::1::::<><>::
 ::res://materials/::1687223579
 smooth_pixel_shader_material.tres::ShaderMaterial::4175166142722613126::1687223579::0::1::::<><>::res://Shaders/SmoothPixel.gdshader
-::res://scenes/::1702850259
+::res://scenes/::1702850792
 game.gd::GDScript::-1::1702846938::0::1::::<>Node2D<>::
 game.tscn::PackedScene::7791475450432062410::1702847279::0::1::::<><>::res://scenes/game.gd<>uid://dr1x22kdg8oeb::::res://scenes/ui/main_menu.tscn<>uid://b0qqm2c5oudfq::::res://materials/smooth_pixel_shader_material.tres<>uid://c0h6perk438yr::::res://scenes/ui/pause.tscn<>uid://g2vs3mhdm0h8::::res://assets/background/Background.png<>uid://foes3g2qe56u::::res://scenes/ui/settings_menu.tscn<>uid://jy1wcbpiriw3::::res://assets/audio/Zero Fall.ogg<>uid://b4t80g7o75i0y::::res://scenes/title.tscn
 scene_manager.gd::GDScript::-1::1702847594::0::1::::<>CanvasLayer<>::
 scene_manager.tscn::PackedScene::2606926678661358181::1702786237::0::1::::<><>::res://scenes/scene_manager.gd<>uid://cl1pmlit1i68i::::res://themes/basic_theme.tres
 title.gd::GDScript::-1::1702848798::0::1::::<>Node2D<>::
-title.tscn::PackedScene::4463168997385981754::1702850259::0::1::::<><>::res://scenes/title.gd<>uid://b7xqeyg1tvxsp::::res://assets/zero-fall-logo-256.png<>uid://b0qqm2c5oudfq::::res://materials/smooth_pixel_shader_material.tres<>uid://g2vs3mhdm0h8::::res://assets/background/Background.png<>uid://bx0ftvbk8oecr::::res://assets/background/Mountains.png<>uid://2cdxa1hi4n48::::res://assets/background/Stars.png<>uid://c0u0bgqrc58a4::::res://assets/background/Clouds.png<>uid://dr1x22kdg8oeb::::res://scenes/ui/main_menu.tscn<>uid://jy1wcbpiriw3::::res://assets/audio/Zero Fall.ogg
+title.tscn::PackedScene::4463168997385981754::1702850792::0::1::::<><>::res://scenes/title.gd<>uid://b7xqeyg1tvxsp::::res://assets/zero-fall-logo-256.png<>uid://b0qqm2c5oudfq::::res://materials/smooth_pixel_shader_material.tres<>uid://g2vs3mhdm0h8::::res://assets/background/Background.png<>uid://bx0ftvbk8oecr::::res://assets/background/Mountains.png<>uid://2cdxa1hi4n48::::res://assets/background/Stars.png<>uid://c0u0bgqrc58a4::::res://assets/background/Clouds.png<>uid://dr1x22kdg8oeb::::res://scenes/ui/main_menu.tscn<>uid://jy1wcbpiriw3::::res://assets/audio/Zero Fall.ogg
 ::res://scenes/effects/::1687565301
 ground_break.gd::GDScript::-1::1687557243::0::1::::<>Node2D<>::
 ground_break.tscn::PackedScene::7206882842519139519::1687565301::0::1::::<><>::res://scenes/effects/ground_break.gd<>uid://dqvl1uo7w1t38::::res://assets/Tilesets/GroundBreak-Sheet.png
-::res://scenes/levels/::1702850259
-cyberplanet.tscn::PackedScene::555930988379646245::1702850259::0::1::::<><>::uid://b0qqm2c5oudfq::::res://materials/smooth_pixel_shader_material.tres<>uid://g2vs3mhdm0h8::::res://assets/background/Background.png<>uid://dybr6d0i5sg6e::::res://assets/background/Sun.png<>uid://bx0ftvbk8oecr::::res://assets/background/Mountains.png<>uid://2cdxa1hi4n48::::res://assets/background/Stars.png<>uid://c0u0bgqrc58a4::::res://assets/background/Clouds.png<>uid://bvcptat5aa2vl::::res://scenes/player/player_grapple.tscn<>uid://b0sa7e0u07qa3::::res://scenes/tilemaps/world_generator.tscn<>uid://buh0t138q25ef::::res://assets/Tilesets/Lava.png<>uid://dv7mdsgemimiq::::res://scenes/ui/ui.tscn<>uid://c0h6perk438yr::::res://scenes/ui/pause.tscn
+::res://scenes/levels/::1702850792
+cyberplanet.tscn::PackedScene::555930988379646245::1702850792::0::1::::<><>::uid://b0qqm2c5oudfq::::res://materials/smooth_pixel_shader_material.tres<>uid://g2vs3mhdm0h8::::res://assets/background/Background.png<>uid://dybr6d0i5sg6e::::res://assets/background/Sun.png<>uid://bx0ftvbk8oecr::::res://assets/background/Mountains.png<>uid://2cdxa1hi4n48::::res://assets/background/Stars.png<>uid://c0u0bgqrc58a4::::res://assets/background/Clouds.png<>uid://bvcptat5aa2vl::::res://scenes/player/player_grapple.tscn<>uid://b0sa7e0u07qa3::::res://scenes/tilemaps/world_generator.tscn<>uid://buh0t138q25ef::::res://assets/Tilesets/Lava.png<>uid://dv7mdsgemimiq::::res://scenes/ui/ui.tscn<>uid://c0h6perk438yr::::res://scenes/ui/pause.tscn
 level1.tscn::PackedScene::6526781918836555274::1702846782::0::1::::<><>::uid://b0qqm2c5oudfq::::res://materials/smooth_pixel_shader_material.tres<>uid://g2vs3mhdm0h8::::res://assets/background/Background.png<>uid://bx0ftvbk8oecr::::res://assets/background/Mountains.png<>uid://bvcptat5aa2vl::::res://scenes/player/player_grapple.tscn<>uid://c0u0bgqrc58a4::::res://assets/background/Clouds.png<>uid://2cdxa1hi4n48::::res://assets/background/Stars.png<>uid://dybr6d0i5sg6e::::res://assets/background/Sun.png<>uid://buh0t138q25ef::::res://assets/Tilesets/Lava.png<>uid://b0sa7e0u07qa3::::res://scenes/tilemaps/world_generator.tscn<>uid://dv7mdsgemimiq::::res://scenes/ui/ui.tscn
 level2.tscn::PackedScene::4295917642669289985::1688351406::0::1::::<><>::uid://b0qqm2c5oudfq::::res://materials/smooth_pixel_shader_material.tres<>uid://i7l365d2s8aj::::res://assets/background/Sky.png<>uid://buh0t138q25ef::::res://assets/Tilesets/Lava.png<>uid://bvcptat5aa2vl::::res://scenes/player/player_grapple.tscn<>uid://b0sa7e0u07qa3::::res://scenes/tilemaps/world_generator.tscn
 ::res://scenes/player/::1702846782
@@ -197,7 +197,7 @@ power_blast.tscn::PackedScene::3700283199433919197::1687799499::0::1::::<><>::re
 ::res://scenes/tilemaps/::1688172090
 world_generator.gd::GDScript::-1::1688172090::0::1::::<>TileMap<>::
 world_generator.tscn::PackedScene::4178357969278847404::1688172065::0::1::::<><>::uid://b0qqm2c5oudfq::::res://materials/smooth_pixel_shader_material.tres<>uid://dhb8hc3cikj5p::::res://assets/Tilesets/level-1-tiles.png<>res://scenes/tilemaps/world_generator.gd
-::res://scenes/ui/::1702850260
+::res://scenes/ui/::1702850792
 FunMetalSet.png::CompressedTexture2D::8670839340699202720::1688348113::1688348113::1::::<><>::
 loading.tscn::PackedScene::8033647746348193375::1687556163::0::1::::<><>::
 main_menu.gd::GDScript::-1::1702849780::0::1::::MainMenu<>CanvasLayer<>::
@@ -207,7 +207,7 @@ pause.tscn::PackedScene::6543922353149087093::1702847280::0::1::::<><>::res://sc
 settings_menu.gd::GDScript::-1::1702849947::0::1::::SettingsMenu<>CanvasLayer<>::
 settings_menu.tscn::PackedScene::380122000179314090::1702849950::0::1::::<><>::res://scenes/ui/settings_menu.gd<>uid://c40xhlbq0xxj2::::res://scenes/ui/volume_slider.tscn
 ui.gd::GDScript::-1::1687546035::0::1::::<>CanvasLayer<>::
-ui.tscn::PackedScene::8700022771790043728::1702850259::0::1::::<><>::res://scenes/ui/ui.gd
+ui.tscn::PackedScene::8700022771790043728::1702850792::0::1::::<><>::res://scenes/ui/ui.gd
 volume_slider.gd::GDScript::-1::1688350471::0::1::::<>Control<>::
 volume_slider.tscn::PackedScene::6861336848194560689::1688351407::0::1::::<><>::res://scenes/ui/volume_slider.gd
 ::res://scripts/::1702786199
@@ -256,7 +256,7 @@ walk_state.gd::GDScript::-1::1700317620::0::1::::WalkState<>State<>::
 walk_up_slope_state.gd::GDScript::-1::1700232778::0::1::::WalkUpSlopeState<>State<>::
 wall_cling_state.gd::GDScript::-1::1700317633::0::1::::WallClingState<>State<>::
 wall_jump_state.gd::GDScript::-1::1700317626::0::1::::WallJumpState<>State<>::
-::res://Shaders/::1702848465
-SmoothPixel.gdshader::Shader::-1::1702848465::0::1::::<><>::
-::res://themes/::1702848465
-basic_theme.tres::Theme::5599525244442124326::1702848465::0::1::::<><>::uid://bpemy6eb6xjf5::::res://assets/fonts/PixelFont.ttf<>uid://cvotks31jnyi8::::res://assets/ui/FunMetalSet.png<>uid://dvshpsoqly1rg::::res://scenes/ui/FunMetalSet.png
+::res://Shaders/::1702850792
+SmoothPixel.gdshader::Shader::-1::1702850792::0::1::::<><>::
+::res://themes/::1702850792
+basic_theme.tres::Theme::5599525244442124326::1702850792::0::1::::<><>::uid://bpemy6eb6xjf5::::res://assets/fonts/PixelFont.ttf<>uid://cvotks31jnyi8::::res://assets/ui/FunMetalSet.png<>uid://dvshpsoqly1rg::::res://scenes/ui/FunMetalSet.png

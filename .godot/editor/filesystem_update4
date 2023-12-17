@@ -1,5 +1,3 @@
 res://scenes/levels/cyberplanet.tscn
-res://themes/basic_theme.tres
 res://Shaders/SmoothPixel.gdshader
-res://scenes/title.tscn
-res://scenes/ui/ui.tscn
+res://scenes/title.gd
