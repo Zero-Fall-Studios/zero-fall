@@ -12,18 +12,15 @@ func _ready():
 	
 func fade_in():
 	show()
-#	animation_player.play("MoveIn")
-	pass
+	animation_player.play("fade_in")
 
 func fade_out():
-#	animation_player.play("MoveOut")
-	pass
+	animation_player.play("fade_out")
+	await animation_player.animation_finished
+	hide()
 
 func _on_button_back_pressed():
-	GameManager.pop_scene()
+	fade_out()
 
 func _on_h_slider_value_changed(value):
 	GameAudioManager.set_volume(0, value)
-
-func _on_button_credits_pressed():
-	GameManager.append_scene("credits_menu")

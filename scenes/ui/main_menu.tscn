@@ -1,24 +1,95 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr1x22kdg8oeb"]
+[gd_scene load_steps=6 format=3 uid="uid://dr1x22kdg8oeb"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_aflyj"]
+[ext_resource type="PackedScene" uid="uid://foes3g2qe56u" path="res://scenes/ui/settings_menu.tscn" id="2_sqqoi"]
 
-[node name="MainMenu" type="CanvasLayer"]
+[sub_resource type="Animation" id="Animation_8kydo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ButtonPlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonSettings:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ButtonQuit:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ktggs"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ButtonPlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonSettings:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ButtonQuit:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_duv8c"]
+_data = {
+"RESET": SubResource("Animation_8kydo"),
+"fade_in": SubResource("Animation_ktggs")
+}
+
+[node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("settings_menu")]
 script = ExtResource("1_aflyj")
-
-[node name="Logo" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.0
-offset_top = -9.5
-offset_right = 15.0
-offset_bottom = 9.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-text = "Zero Fall"
+settings_menu = NodePath("SettingsMenu")
 
 [node name="ButtonPlay" type="Button" parent="."]
 anchors_preset = 3
@@ -49,6 +120,7 @@ grow_vertical = 0
 text = "Settings"
 
 [node name="ButtonQuit" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -62,6 +134,15 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Quit
 "
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_duv8c")
+}
+
+[node name="SettingsMenu" parent="." instance=ExtResource("2_sqqoi")]
+visible = false
+hide_on_start = true
 
 [connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="ButtonSettings" to="." method="_on_button_settings_pressed"]

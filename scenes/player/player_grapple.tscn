@@ -232,10 +232,10 @@ texture = ExtResource("4_bxxg7")
 hframes = 109
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_42iyb")
 }
+autoplay = "Idle"
 
 [node name="Muzzle" type="Node2D" parent="."]
 position = Vector2(8, 3)

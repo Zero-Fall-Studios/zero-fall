@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Zero Fall"
-run/main_scene="res://scenes/game.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+run/main_scene="res://scenes/title.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
 
 [aseprite_importers]
 
@@ -22,6 +22,7 @@ aseprite_executable_path="C:\\Program Files (x86)\\Steam\\steamapps\\common\\Ase
 
 GameManager="*res://scripts/game_manager.gd"
 GameAudioManager="*res://scripts/game_audio_manager.gd"
+SceneManager="*res://scenes/scene_manager.tscn"
 
 [display]
 
@@ -34,7 +35,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
+enabled=PackedStringArray()
 
 [gui]
 
