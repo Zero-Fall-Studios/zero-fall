@@ -1,10 +1,11 @@
+class_name UI
 extends CanvasLayer
 @onready var label_health : Label = $LabelHealth
-@onready var player : PlayerGrapple = %PlayerGrapple
+@export var player : Character
 
 func _ready():
-	var callable = Callable(self, "_health_change")
-	player.connect("health_change", callable)
+	if player:
+		player.health_changed.connect(_on_health_changed)
 
-func _health_change(health):
+func _on_health_changed(health: int):
 	label_health.text = "HP - " + str(health)

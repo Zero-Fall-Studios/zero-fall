@@ -6,13 +6,21 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var collision_shape = $CollisionShape2D
 
-@export_category("Character Physics")
+@export_category("Movement")
 @export var move_speed: float = 400
 @export var run_modifier: float = 1.5
+
+@export_category("Jumping")
 @export var jumps: int = 1
 @export var jump_force: float = 900.0
-@export var wall_friction: float = 0.9
+
+@export_category("Pushing")
 @export var push_force: float = 80.0
+
+@export_category("Friction")
+@export var wall_friction: float = 0.9
+@export var ground_friction: float = 0.9
+@export var air_friction: float = 0.5
 
 @export_category("Spawn")
 @export var spawn_on_start: bool = false
@@ -20,6 +28,14 @@ extends CharacterBody2D
 
 @export_category("Controls")
 @export var controls : Node
+@export var using_controller = false
+
+@export var lava_tilemap : TileMap
+
+@onready var jump_audio_player : AudioStreamPlayer = $JumpAudioPlayer
+@onready var shoot_audio_player : AudioStreamPlayer = $ShootAudioPlayer
+@onready var land_audio_player : AudioStreamPlayer = $LandAudioPlayer
+@onready var erosion_audio_player : AudioStreamPlayer = $ErosionAudioPlayer
 
 var jumps_left = 0
 var is_animation_running : bool = false
@@ -28,7 +44,7 @@ var movement : float = 0
 var direction : Vector2 = Vector2(1, 0)
 var facing_direction : float = 1
 var paralized : bool = false
-
+var health = 100
 
 enum Abilities {
 	Walk,
@@ -40,6 +56,8 @@ enum Abilities {
 	Crouch,
 	WallJump
 }
+
+signal health_changed(health: int)
 
 func _ready():
 	hide()
@@ -61,6 +79,14 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 
+	if lava_tilemap:
+		var cell = lava_tilemap.local_to_map(position)
+		var lava_tile_data = lava_tilemap.get_cell_tile_data(0, cell)
+
+		if (lava_tile_data):
+			erosion_audio_player.play()
+			take_damage(1)	
+
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 		
@@ -73,6 +99,14 @@ func _on_animation_finished(_anim_name: StringName):
 func spawn(pos):
 	position = pos
 	show()
+	health_changed.emit(health)
+
+func take_damage(amount):
+	health -= amount
+	if health < 0:
+		position = Vector2(0, 0)
+		health = 100
+	health_changed.emit(health)
 
 func kill():
 	state_machine.change_state(state_machine.states.get("DieState"))
@@ -83,20 +117,42 @@ func apply_gravity(delta: float):
 func apply_movement(_delta: float):
 	movement = get_movement()
 
-	if movement != 0:
-		change_dir(sign(movement))
-
 	var speed = movement * move_speed
+
+	var friction = get_friction()
 
 	if is_running() or is_jump_flipping():
 		speed = speed * run_modifier
 
-	velocity.x = speed
+	velocity.x = speed * friction
+
+	handle_flip()
+
+func handle_flip():
+	if using_controller:
+		if(velocity.x > 0):
+			scale.x = scale.y * 1
+		elif(velocity.x < 0):
+			scale.x = scale.y * -1
+	else:
+		var mouse_pos = get_global_mouse_position()
+		if mouse_pos.x < position.x:
+			scale.x = scale.y * -1
+		else:
+			scale.x = scale.y * 1
 
 func change_dir(dir: float):
 	if dir != facing_direction:
 		facing_direction = dir
 		scale.x = -1
+
+func get_friction():
+	if is_on_floor():
+		return ground_friction
+	elif is_wall_clinging():
+		return wall_friction
+	else:
+		return air_friction
 
 func apply_jump():
 	jumps_left = jumps_left - 1

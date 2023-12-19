@@ -1,3 +1,4 @@
 res://scenes/levels/cyberplanet.tscn
+res://themes/basic_theme.tres
 res://Shaders/SmoothPixel.gdshader
-res://scenes/title.gd
+res://scenes/player/kung_fury.tscn
