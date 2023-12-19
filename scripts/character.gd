@@ -100,6 +100,9 @@ func spawn(pos):
 	position = pos
 	show()
 	health_changed.emit(health)
+	animation_player.play("Spawn")
+	await animation_player.animation_finished
+	state_machine.change_state(state_machine.states.get("IdleState"))
 
 func take_damage(amount):
 	health -= amount
@@ -130,9 +133,9 @@ func apply_movement(_delta: float):
 
 func handle_flip():
 	if using_controller:
-		if(velocity.x > 0):
+		if velocity.x > 0:
 			scale.x = scale.y * 1
-		elif(velocity.x < 0):
+		elif velocity.x < 0:
 			scale.x = scale.y * -1
 	else:
 		var mouse_pos = get_global_mouse_position()

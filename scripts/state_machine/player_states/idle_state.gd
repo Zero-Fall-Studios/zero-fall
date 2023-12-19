@@ -17,6 +17,7 @@ func process_input(_event: InputEvent) -> State:
 func process_physics(delta: float) -> State:
 	parent.apply_gravity(delta)
 	parent.move()
+	parent.handle_flip()
 
 	if parent.is_falling():
 		return state_machine.states.get("FallState")

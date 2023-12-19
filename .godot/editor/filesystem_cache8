@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1702944040
+::res://::1702952243
 default_bus_layout.tres::AudioBusLayout::8351554488068180333::1687405277::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1702851103::0::1::::<><>::
 README.md::TextFile::-1::1676015438::0::1::::<><>::
@@ -47,11 +47,12 @@ PixelFont.ttf::FontFile::3448283946737589556::1686613627::1687545411::1::::<><>:
 ::res://assets/particles/::1687217008
 RainDrop-Sheet.png::CompressedTexture2D::3977430005602269690::1686708583::1687217007::1::::<><>::
 Steam.png::CompressedTexture2D::5368961521023223427::1686708583::1687217007::1::::<><>::
-::res://assets/player/::1687799461
+::res://assets/player/::1702954410
 KungFury-16x16-Sheet.png::CompressedTexture2D::6676957335888310135::1687313466::1687313473::1::::<><>::
 KungFury-16x16.png::CompressedTexture2D::3183034928390633142::1687799461::1687799375::1::::<><>::
 Links.png::CompressedTexture2D::2394506965911966608::1675555438::1687217007::1::::<><>::
 Lori.png::CompressedTexture2D::7447423644720874978::1674789706::1687217007::1::::<><>::
+PlayerSpawn.png::CompressedTexture2D::1346777406699166175::1702954425::1702954426::1::::<><>::
 Tip.png::CompressedTexture2D::4495816986777342462::1675555278::1687217007::1::::<><>::
 ::res://assets/projectiles/::1687798744
 Bullet-Sheet.png::CompressedTexture2D::5586309351775612553::1687315417::1687315419::1::::<><>::
@@ -172,7 +173,7 @@ index.apple-touch-icon.png::CompressedTexture2D::970742879147708845::1702851106:
 index.icon.png::CompressedTexture2D::3618395576114270512::1702851106::1702851620::1::::<><>::
 index.png::CompressedTexture2D::4878258932151152582::1702851106::1702851620::1::::<><>::
 ::res://build/win/::1702851107
-::res://materials/::1687223579
+::res://materials/::1702952647
 smooth_pixel_shader_material.tres::ShaderMaterial::4175166142722613126::1687223579::0::1::::<><>::res://Shaders/SmoothPixel.gdshader
 ::res://scenes/::1702916018
 game.gd::GDScript::-1::1702846938::0::1::::<>Node2D<>::
@@ -184,14 +185,14 @@ title.tscn::PackedScene::4463168997385981754::1702916018::0::1::::<><>::res://sc
 ::res://scenes/effects/::1687565301
 ground_break.gd::GDScript::-1::1687557243::0::1::::<>Node2D<>::
 ground_break.tscn::PackedScene::7206882842519139519::1687565301::0::1::::<><>::res://scenes/effects/ground_break.gd<>uid://dqvl1uo7w1t38::::res://assets/Tilesets/GroundBreak-Sheet.png
-::res://scenes/levels/::1702943997
-cyberplanet.tscn::PackedScene::555930988379646245::1702943997::0::1::::<><>::uid://b0qqm2c5oudfq::::res://materials/smooth_pixel_shader_material.tres<>uid://g2vs3mhdm0h8::::res://assets/background/Background.png<>uid://dybr6d0i5sg6e::::res://assets/background/Sun.png<>uid://bx0ftvbk8oecr::::res://assets/background/Mountains.png<>uid://2cdxa1hi4n48::::res://assets/background/Stars.png<>uid://c0u0bgqrc58a4::::res://assets/background/Clouds.png<>uid://b0sa7e0u07qa3::::res://scenes/tilemaps/world_generator.tscn<>uid://buh0t138q25ef::::res://assets/Tilesets/Lava.png<>uid://dv7mdsgemimiq::::res://scenes/ui/ui.tscn<>uid://darg1w8l3n8cw::::res://scenes/player/kung_fury.tscn<>uid://c0h6perk438yr::::res://scenes/ui/pause.tscn
+::res://scenes/levels/::1702954411
+cyberplanet.tscn::PackedScene::555930988379646245::1702954411::0::1::::<><>::uid://b0qqm2c5oudfq::::res://materials/smooth_pixel_shader_material.tres<>uid://g2vs3mhdm0h8::::res://assets/background/Background.png<>uid://dybr6d0i5sg6e::::res://assets/background/Sun.png<>uid://bx0ftvbk8oecr::::res://assets/background/Mountains.png<>uid://2cdxa1hi4n48::::res://assets/background/Stars.png<>uid://c0u0bgqrc58a4::::res://assets/background/Clouds.png<>uid://b0sa7e0u07qa3::::res://scenes/tilemaps/world_generator.tscn<>uid://buh0t138q25ef::::res://assets/Tilesets/Lava.png<>uid://dv7mdsgemimiq::::res://scenes/ui/ui.tscn<>uid://darg1w8l3n8cw::::res://scenes/player/kung_fury.tscn<>uid://c0h6perk438yr::::res://scenes/ui/pause.tscn
 level1.tscn::PackedScene::6526781918836555274::1702846782::0::1::::<><>::uid://b0qqm2c5oudfq::::res://materials/smooth_pixel_shader_material.tres<>uid://g2vs3mhdm0h8::::res://assets/background/Background.png<>uid://bx0ftvbk8oecr::::res://assets/background/Mountains.png<>uid://bvcptat5aa2vl::::res://scenes/player/player_grapple.tscn<>uid://c0u0bgqrc58a4::::res://assets/background/Clouds.png<>uid://2cdxa1hi4n48::::res://assets/background/Stars.png<>uid://dybr6d0i5sg6e::::res://assets/background/Sun.png<>uid://buh0t138q25ef::::res://assets/Tilesets/Lava.png<>uid://b0sa7e0u07qa3::::res://scenes/tilemaps/world_generator.tscn<>uid://dv7mdsgemimiq::::res://scenes/ui/ui.tscn
 level2.tscn::PackedScene::4295917642669289985::1688351406::0::1::::<><>::uid://b0qqm2c5oudfq::::res://materials/smooth_pixel_shader_material.tres<>uid://i7l365d2s8aj::::res://assets/background/Sky.png<>uid://buh0t138q25ef::::res://assets/Tilesets/Lava.png<>uid://bvcptat5aa2vl::::res://scenes/player/player_grapple.tscn<>uid://b0sa7e0u07qa3::::res://scenes/tilemaps/world_generator.tscn
-::res://scenes/player/::1702943950
+::res://scenes/player/::1702954411
 chain.tscn::PackedScene::825092192134104516::1688167024::0::1::::<><>::res://scenes/player/grapple.gd<>uid://bad6gd7jdt1b5::::res://assets/player/Links.png<>uid://b5b2pi7s3dxec::::res://assets/player/Tip.png<>uid://5rjncxcrsqh6::::res://assets/audio/laserShoot (1).wav<>uid://ci6ks65mqxnfq::::res://assets/audio/grapple_stick.wav
 grapple.gd::GDScript::-1::1687489754::0::1::::<>Node2D<>::
-kung_fury.tscn::PackedScene::7194768412526450598::1702943950::0::1::::<><>::res://scripts/character.gd<>uid://l0xfa6mufnom::::res://scenes/player/chain.tscn<>uid://b0qqm2c5oudfq::::res://materials/smooth_pixel_shader_material.tres<>uid://c2emrnwbla0u2::::res://assets/player/KungFury-16x16-Sheet.png<>uid://4srng378fmhb::::res://assets/audio/jump.wav<>uid://b3p1sb241tuu5::::res://assets/audio/explosion.wav<>uid://b1xvg7mi8vtlb::::res://assets/audio/click.wav<>res://scripts/state_machine/state_machine.gd<>uid://c1ac2882ia44e::::res://assets/audio/erosion.wav<>res://scripts/state_machine/player_states/idle_state.gd<>res://scripts/state_machine/player_states/walk_state.gd<>res://scripts/state_machine/player_states/run_state.gd<>res://scripts/state_machine/player_states/jump_state.gd<>res://scripts/state_machine/player_states/jump_flip_state.gd<>res://scripts/controls/player_controls.gd<>res://scripts/state_machine/player_states/fall_state.gd<>res://scripts/state_machine/player_states/land_state.gd
+kung_fury.tscn::PackedScene::7194768412526450598::1702954411::0::1::::<><>::res://scripts/character.gd<>res://Shaders/teleport.gdshader<>uid://l0xfa6mufnom::::res://scenes/player/chain.tscn<>uid://c2emrnwbla0u2::::res://assets/player/KungFury-16x16-Sheet.png<>uid://tgnhys15pi6j::::res://assets/player/PlayerSpawn.png<>uid://4srng378fmhb::::res://assets/audio/jump.wav<>uid://b3p1sb241tuu5::::res://assets/audio/explosion.wav<>uid://b1xvg7mi8vtlb::::res://assets/audio/click.wav<>res://scripts/state_machine/state_machine.gd<>uid://c1ac2882ia44e::::res://assets/audio/erosion.wav<>res://scripts/state_machine/player_states/spawn_state.gd<>res://scripts/state_machine/player_states/idle_state.gd<>res://scripts/state_machine/player_states/walk_state.gd<>res://scripts/state_machine/player_states/run_state.gd<>res://scripts/state_machine/player_states/jump_state.gd<>res://scripts/state_machine/player_states/jump_flip_state.gd<>res://scripts/controls/player_controls.gd<>res://scripts/state_machine/player_states/fall_state.gd<>res://scripts/state_machine/player_states/land_state.gd
 player.gd::GDScript::-1::1686709451::0::1::::<>CharacterBody2D<>::
 player.tscn::PackedScene::4420801570105614623::1687565259::0::1::::<><>::res://scenes/player/player.gd<>uid://c2emrnwbla0u2::::res://assets/player/KungFury-16x16-Sheet.png<>uid://bu3iba4cyo2m3::::res://scenes/player/rope.tscn
 player_grapple.gd::GDScript::-1::1688350051::0::1::::PlayerGrapple<>CharacterBody2D<>::
@@ -220,7 +221,7 @@ volume_slider.gd::GDScript::-1::1688350471::0::1::::<>Control<>::
 volume_slider.tscn::PackedScene::6861336848194560689::1688351407::0::1::::<><>::res://scenes/ui/volume_slider.gd
 ::res://scripts/::1702942841
 camera_transition.gd::GDScript::-1::1701051381::0::1::::<>Node2D<>::
-character.gd::GDScript::-1::1702943984::0::1::::Character<>CharacterBody2D<>::
+character.gd::GDScript::-1::1702953780::0::1::::Character<>CharacterBody2D<>::
 conveyor.gd::GDScript::-1::1698970410::0::1::::<>Sprite2D<>::
 game_audio_manager.gd::GDScript::-1::1687205359::0::1::::<>Node<>::
 game_data.gd::GDScript::-1::1687205044::0::1::::GameData<>Resource<>::
@@ -233,8 +234,8 @@ ai_controls.gd::GDScript::-1::1701224221::0::1::::<>Node<>::
 player_controls.gd::GDScript::-1::1701224208::0::1::::<>Node<>::
 ::res://scripts/state_machine/::1702850169
 state.gd::GDScript::-1::1700330490::0::1::::State<>Node<>::
-state_machine.gd::GDScript::-1::1700320963::0::1::::StateMachine<>Node<>::
-::res://scripts/state_machine/player_states/::1702785665
+state_machine.gd::GDScript::-1::1702953630::0::1::::StateMachine<>Node<>::
+::res://scripts/state_machine/player_states/::1702953185
 attack_primary_state.gd::GDScript::-1::1700317416::0::1::::AttackPrimaryState<>State<>::
 attack_secondary_state.gd::GDScript::-1::1700317415::0::1::::AttackSecondaryState<>State<>::
 crouch_idle_state.gd::GDScript::-1::1700317415::0::1::::CrouchIdleState<>State<>::
@@ -245,7 +246,7 @@ dash_state.gd::GDScript::-1::1700232778::0::1::::DashState<>State<>::
 die_state.gd::GDScript::-1::1701303556::0::1::::DieState<>State<>::
 down_thrust_state.gd::GDScript::-1::1700232778::0::1::::DownThrustState<>State<>::
 fall_state.gd::GDScript::-1::1700317677::0::1::::FallState<>State<>::
-idle_state.gd::GDScript::-1::1700317567::0::1::::IdleState<>State<>::
+idle_state.gd::GDScript::-1::1702953842::0::1::::IdleState<>State<>::
 jump_flip_state.gd::GDScript::-1::1700317682::0::1::::JumpFlipState<>State<>::
 jump_state.gd::GDScript::-1::1700317687::0::1::::JumpState<>State<>::
 ladder_climb_state.gd::GDScript::-1::1700232778::0::1::::LadderClimbState<>State<>::
@@ -261,13 +262,15 @@ slide_state.gd::GDScript::-1::1700232778::0::1::::SlideState<>State<>::
 smash_down_collided.gd::GDScript::-1::1700232778::0::1::::SmashDownCollidedState<>State<>::
 smash_down_performed.gd::GDScript::-1::1700232778::0::1::::SmashDownPerformedState<>State<>::
 smash_down_started.gd::GDScript::-1::1700232778::0::1::::SmashDownStartedState<>State<>::
+spawn_state.gd::GDScript::-1::1702953558::0::1::::SpawnState<>State<>::
 swim_state.gd::GDScript::-1::1700232778::0::1::::SwimState<>State<>::
 up_thrust_state.gd::GDScript::-1::1700232778::0::1::::UpThrustState<>State<>::
 walk_state.gd::GDScript::-1::1700317620::0::1::::WalkState<>State<>::
 walk_up_slope_state.gd::GDScript::-1::1700232778::0::1::::WalkUpSlopeState<>State<>::
 wall_cling_state.gd::GDScript::-1::1700317633::0::1::::WallClingState<>State<>::
 wall_jump_state.gd::GDScript::-1::1700317626::0::1::::WallJumpState<>State<>::
-::res://Shaders/::1702938630
-SmoothPixel.gdshader::Shader::-1::1702938630::0::1::::<><>::
-::res://themes/::1702938630
-basic_theme.tres::Theme::5599525244442124326::1702938630::0::1::::<><>::uid://bpemy6eb6xjf5::::res://assets/fonts/PixelFont.ttf<>uid://cvotks31jnyi8::::res://assets/ui/FunMetalSet.png<>uid://dvshpsoqly1rg::::res://scenes/ui/FunMetalSet.png
+::res://Shaders/::1702954411
+SmoothPixel.gdshader::Shader::-1::1702954411::0::1::::<><>::
+teleport.gdshader::Shader::-1::1702954411::0::1::::<><>::
+::res://themes/::1702952864
+basic_theme.tres::Theme::5599525244442124326::1702952864::0::1::::<><>::uid://bpemy6eb6xjf5::::res://assets/fonts/PixelFont.ttf<>uid://cvotks31jnyi8::::res://assets/ui/FunMetalSet.png<>uid://dvshpsoqly1rg::::res://scenes/ui/FunMetalSet.png

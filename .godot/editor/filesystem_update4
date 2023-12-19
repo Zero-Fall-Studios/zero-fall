@@ -1,4 +1,12 @@
-res://scenes/levels/cyberplanet.tscn
+res://scenes/player/kung_fury.tscn
 res://themes/basic_theme.tres
 res://Shaders/SmoothPixel.gdshader
-res://scenes/player/kung_fury.tscn
+res://Shaders/teleport.gdshader
+res://scripts/character.gd
+res://scenes/levels/cyberplanet.tscn
+res://scripts/state_machine/player_states/spawn_state.gd
+res://scripts/state_machine/player_states/jump_state.gd
+res://scripts/state_machine/player_states/jump_flip_state.gd
+res://scripts/state_machine/state.gd
+res://scripts/state_machine/state_machine.gd
+res://scripts/state_machine/player_states/idle_state.gd

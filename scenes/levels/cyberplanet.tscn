@@ -87,6 +87,7 @@ position = Vector2(2, -20)
 texture = ExtResource("6_gidkx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-45, 52)
 position_smoothing_enabled = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
@@ -101,6 +102,7 @@ shadow_filter_smooth = 1.9
 color = Color(1, 0.678431, 0.960784, 1)
 
 [node name="WorldGenerator" parent="." instance=ExtResource("8_mncuo")]
+layer_0/tile_data = PackedInt32Array(524288, 196608, 7, 589823, 131072, 7, 589822, 131072, 7, 589821, 131072, 7, 589820, 131072, 7, 589819, 131072, 7, 589818, 131072, 7, 589817, 65536, 6, 524281, 0, 5, 458745, 0, 4)
 
 [node name="TileMapLava" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_1h5ax")
@@ -114,6 +116,7 @@ player = NodePath("../KungFury")
 visible = false
 
 [node name="KungFury" parent="." node_paths=PackedStringArray("lava_tilemap") instance=ExtResource("11_6ydke")]
+position = Vector2(-45, 52)
 lava_tilemap = NodePath("../TileMapLava")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="KungFury"]
