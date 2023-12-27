@@ -76,10 +76,10 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/Panel"]
 layout_mode = 2
-offset_left = 45.0
-offset_top = 12.0
-offset_right = 75.0
-offset_bottom = 31.0
+offset_left = 207.0
+offset_top = 73.0
+offset_right = 237.0
+offset_bottom = 92.0
 size_flags_horizontal = 4
 text = "Settings"
 
@@ -90,10 +90,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = -42.0
-offset_right = 9.0
-offset_bottom = -42.0
+offset_left = -23.0
+offset_top = -61.0
+offset_right = 7.0
+offset_bottom = -61.0
 grow_horizontal = 2
 grow_vertical = 2
 label_text = "Music Volume"
@@ -105,10 +105,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = -19.0
-offset_right = 9.0
-offset_bottom = -19.0
+offset_left = -24.0
+offset_top = -25.0
+offset_right = 6.0
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 bus_index = 1
@@ -121,21 +121,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = 3.0
-offset_right = 9.0
-offset_bottom = 3.0
+offset_left = -23.0
+offset_top = 13.0
+offset_right = 7.0
+offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 bus_index = 2
 label_text = "Effects Volume"
 
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/Panel"]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 206.0
+offset_right = 284.189
+offset_bottom = 232.0
+text = "Use Mouse For Direction?"
+
 [node name="ButtonBack" type="Button" parent="MarginContainer/Panel"]
 layout_mode = 2
-offset_left = 47.0
-offset_top = 92.0
-offset_right = 70.189
-offset_bottom = 118.0
+offset_left = 209.0
+offset_top = 251.0
+offset_right = 232.189
+offset_bottom = 277.0
 text = "Back
 "
 
@@ -144,4 +152,5 @@ libraries = {
 "": SubResource("AnimationLibrary_m51nt")
 }
 
+[connection signal="toggled" from="MarginContainer/Panel/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="pressed" from="MarginContainer/Panel/ButtonBack" to="." method="_on_button_back_pressed"]

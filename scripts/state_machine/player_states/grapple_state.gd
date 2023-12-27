@@ -2,7 +2,6 @@ class_name GrappleState
 extends State
 
 @export var grapple : Grapple
-@export var using_controller = false
 @export var CHAIN_PULL = 15
 
 var chain_velocity := Vector2(0,0)
@@ -19,12 +18,12 @@ func enter() -> void:
 	super()
 	parent.landed_on_floor()
 	var shoot_position = Vector2(1, 0)
-	if using_controller:
-		shoot_position = parent.get_input()
-	else:
+	if parent.use_mouse:
 		shoot_position = parent.get_local_mouse_position()
+		shoot_position.x *= parent.facing_direction	
+	else:
+		shoot_position = parent.get_input()
 
-	shoot_position.x *= parent.facing_direction	
 	grapple.shoot(shoot_position)
 
 func process_physics(delta: float) -> State:

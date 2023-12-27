@@ -11,11 +11,12 @@ script = ExtResource("1_l4xla")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/separation = -8
+theme_override_constants/separation = -3
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
+text = "Label"
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2

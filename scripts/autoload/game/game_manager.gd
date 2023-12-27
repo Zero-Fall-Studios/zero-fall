@@ -6,6 +6,8 @@ var save_file = save_file_path + save_file_name
 
 var game_data : GameData = GameData.new()
 
+signal game_data_changed
+
 func _ready():
 	# clear_game_data()
 	verify_save_dir(save_file_path)
@@ -19,6 +21,7 @@ func verify_save_dir(path):
 func save_game_data():
 	# game_data.debug()
 	ResourceSaver.save(game_data, save_file)
+	game_data_changed.emit()
 
 func load_game_data():
 	var r = ResourceLoader.load(save_file)

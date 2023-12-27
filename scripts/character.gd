@@ -29,7 +29,7 @@ extends CharacterBody2D
 
 @export_category("Controls")
 @export var controls : Node
-@export var using_controller = false
+@export var use_mouse = false
 
 @export_category("Inventory")
 @export var inventory : Inventory
@@ -67,6 +67,8 @@ signal health_changed(health: int)
 
 func _ready():
 	hide()
+	GameManager.game_data_changed.connect(_on_game_data_changed)
+	use_mouse = GameManager.game_data.use_mouse
 	state_machine.init(self)
 	animation_player.animation_started.connect(_on_animation_started)
 	animation_player.animation_finished.connect(_on_animation_finished)
@@ -78,6 +80,9 @@ func _ready():
 
 	if spawn_on_start:
 		spawn(position)
+
+func _on_game_data_changed():
+	use_mouse = GameManager.game_data.use_mouse
 
 func _unhandled_input(event: InputEvent) -> void:
 	if paralized:
@@ -146,7 +151,7 @@ func apply_movement(_delta: float):
 	handle_flip()
 
 func handle_flip():
-	if using_controller:
+	if not use_mouse:
 		if velocity.x > 0:
 			scale.x = scale.y * 1
 			facing_direction = 1
