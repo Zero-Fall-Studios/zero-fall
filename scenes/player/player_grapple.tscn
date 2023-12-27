@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/player/player_grapple.gd" id="1_bp6jc"]
 [ext_resource type="PackedScene" uid="uid://dfijt5s44i68t" path="res://scenes/projectiles/bullet.tscn" id="2_sef0j"]
-[ext_resource type="PackedScene" uid="uid://l0xfa6mufnom" path="res://scenes/player/chain.tscn" id="3_gcmr8"]
+[ext_resource type="PackedScene" uid="uid://l0xfa6mufnom" path="res://scenes/player/weapons/grapple/grapple.tscn" id="3_gcmr8"]
 [ext_resource type="Material" uid="uid://b0qqm2c5oudfq" path="res://materials/smooth_pixel_shader_material.tres" id="3_tka3b"]
 [ext_resource type="Texture2D" uid="uid://c2emrnwbla0u2" path="res://assets/player/KungFury-16x16-Sheet.png" id="4_bxxg7"]
 [ext_resource type="AudioStream" uid="uid://4srng378fmhb" path="res://assets/audio/jump.wav" id="5_y3lv8"]

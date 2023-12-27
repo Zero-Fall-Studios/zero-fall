@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkikyr0v8n65f"]
+
+[ext_resource type="Script" path="res://scripts/events/event_system.gd" id="1_sjobw"]
+[ext_resource type="Script" path="res://scripts/events/event_scene.gd" id="2_blk0f"]
+
+[node name="SceneEvents" type="Node"]
+script = ExtResource("1_sjobw")
+run_events_on_ready = true
+
+[node name="EventScene" type="Node" parent="."]
+script = ExtResource("2_blk0f")
+show_black_screen = true
+time_to_wait_after = 1.0
+
+[node name="EventScene2" type="Node" parent="."]
+script = ExtResource("2_blk0f")
+fade_out = true
+time_to_wait_after = 1.0

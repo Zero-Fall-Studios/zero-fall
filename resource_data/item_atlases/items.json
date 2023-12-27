@@ -1,0 +1,45 @@
+[
+  {
+    "id": "zc4hlxqfdlugubyemdqhugbp1",
+    "name": "Grapple",
+    "is_unique": false,
+    "max_stack_amount": "1",
+    "quantity": "1",
+    "type": "Weapon",
+    "state_name": "GrappleState"
+  },
+  {
+    "id": "zc4hlxqfdlugfbyemdqhugbp2",
+    "name": "Handgun",
+    "is_unique": false,
+    "max_stack_amount": "1",
+    "quantity": "1",
+    "type": "Weapon",
+    "state_name": "HandgunState"
+  },
+  {
+    "id": "zc4hlxqfdlugfbyemdqhugbp3",
+    "name": "Wand",
+    "is_unique": false,
+    "max_stack_amount": "1",
+    "quantity": "1",
+    "type": "Weapon",
+    "state_name": "WandState"
+  },
+  {
+    "id": "zc4hlxqfdlugfbyemdqhugbp4",
+    "name": "Necklace",
+    "is_unique": false,
+    "max_stack_amount": "1",
+    "quantity": "1",
+    "type": "Consumable"
+  },
+  {
+    "id": "zc4hlxqfdlugfbyemdqhugbp5",
+    "name": "Shield",
+    "is_unique": false,
+    "max_stack_amount": "1",
+    "quantity": "1",
+    "type": "Consumable"
+  }
+]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemAtlas" load_steps=3 format=3 uid="uid://c82hjof2scyef"]
+
+[ext_resource type="Script" path="res://scripts/inventory/item_atlas.gd" id="1_6bhsy"]
+[ext_resource type="Texture2D" uid="uid://dc8taqvij1y7d" path="res://assets/items/items.png" id="2_vd1qy"]
+
+[resource]
+script = ExtResource("1_6bhsy")
+texture = ExtResource("2_vd1qy")
+json_src = "res://resource_data/item_atlases/items.json"
+interval = 16
+width = 5
+height = 1
+item_index = 0

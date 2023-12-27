@@ -1,8 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://darg1w8l3n8cw"]
+[gd_scene load_steps=39 format=3 uid="uid://darg1w8l3n8cw"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_tm4rn"]
+[ext_resource type="Resource" uid="uid://5ty56lylab6q" path="res://resource_data/inventory.tres" id="2_05kkw"]
 [ext_resource type="Shader" path="res://Shaders/teleport.gdshader" id="3_r4yx8"]
-[ext_resource type="PackedScene" uid="uid://l0xfa6mufnom" path="res://scenes/player/chain.tscn" id="3_s4ppl"]
 [ext_resource type="Texture2D" uid="uid://c2emrnwbla0u2" path="res://assets/player/KungFury-16x16-Sheet.png" id="5_3y85u"]
 [ext_resource type="Texture2D" uid="uid://tgnhys15pi6j" path="res://assets/player/PlayerSpawn.png" id="5_ml6vw"]
 [ext_resource type="AudioStream" uid="uid://4srng378fmhb" path="res://assets/audio/jump.wav" id="6_lvkt7"]
@@ -19,6 +19,8 @@
 [ext_resource type="Script" path="res://scripts/controls/player_controls.gd" id="15_g26ov"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/fall_state.gd" id="15_kvvu4"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/land_state.gd" id="16_i5n88"]
+[ext_resource type="PackedScene" uid="uid://l0xfa6mufnom" path="res://scenes/player/weapons/grapple/grapple.tscn" id="19_280mi"]
+[ext_resource type="Script" path="res://scripts/state_machine/player_states/grapple_state.gd" id="20_fkiyg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8wdf"]
 size = Vector2(6, 21)
@@ -213,26 +215,6 @@ tracks/0/keys = {
 "values": [108]
 }
 
-[sub_resource type="Animation" id="Animation_el132"]
-resource_name = "UpThrust"
-
-[sub_resource type="Animation" id="Animation_t1h8q"]
-resource_name = "Walk"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [2, 3, 4, 5, 6, 7]
-}
-
 [sub_resource type="Animation" id="Animation_wxbjd"]
 resource_name = "Spawn"
 length = 3.0
@@ -259,6 +241,26 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_el132"]
+resource_name = "UpThrust"
+
+[sub_resource type="Animation" id="Animation_t1h8q"]
+resource_name = "Walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_42iyb"]
@@ -290,12 +292,11 @@ ground_friction = 1.0
 air_friction = 1.5
 spawn_on_start = true
 controls = NodePath("Controls")
+inventory = ExtResource("2_05kkw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 5.5)
 shape = SubResource("RectangleShape2D_g8wdf")
-
-[node name="Chain" parent="." instance=ExtResource("3_s4ppl")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_booie")
@@ -364,5 +365,13 @@ animation_name = "Fall"
 script = ExtResource("16_i5n88")
 animation_name = "Land"
 
+[node name="GrappleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("grapple")]
+script = ExtResource("20_fkiyg")
+grapple = NodePath("../../Grapple")
+CHAIN_PULL = 25
+animation_name = "Walk"
+
 [node name="Controls" type="Node" parent="."]
 script = ExtResource("15_g26ov")
+
+[node name="Grapple" parent="." instance=ExtResource("19_280mi")]

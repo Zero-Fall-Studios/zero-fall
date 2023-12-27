@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkp6xj5phuhbm"]
+
+[ext_resource type="Script" path="res://scripts/autoload/camera_transition.gd" id="1_gt2a6"]
+
+[node name="CameraTransition" type="Node2D"]
+script = ExtResource("1_gt2a6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false

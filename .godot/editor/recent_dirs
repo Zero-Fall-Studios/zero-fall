@@ -1,11 +1,5 @@
-res://materials
-res://scenes/player
-D:/ZeroFallStudios/Code/ZeroFallStudios/Godot/Zero Fall/build/linux
-res://assets
-D:/ZeroFallStudios/Code/ZeroFallStudios/Godot/Zero Fall/build/web
-res://scenes
-res://scenes/levels
-res://themes
-res://scenes/ui
-res://scripts
-res://
+res://assets/brand
+res://scripts/inventory
+res://resource_data/item_atlases
+res://assets/items
+res://resource_data

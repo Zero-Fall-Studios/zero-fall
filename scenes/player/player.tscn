@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_a58l8"]
 [ext_resource type="Texture2D" uid="uid://c2emrnwbla0u2" path="res://assets/player/KungFury-16x16-Sheet.png" id="2_vypm7"]
-[ext_resource type="PackedScene" uid="uid://bu3iba4cyo2m3" path="res://scenes/player/rope.tscn" id="3_if16j"]
+[ext_resource type="PackedScene" uid="uid://bu3iba4cyo2m3" path="res://scenes/player/weapons/grapple/rope.tscn" id="3_if16j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t07iq"]
 size = Vector2(10, 16)

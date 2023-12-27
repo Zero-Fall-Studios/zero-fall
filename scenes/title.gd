@@ -8,15 +8,25 @@ extends Node2D
 var on_title = true
 
 func _ready():
-	SceneManager.show_black_screen()
-	await get_tree().create_timer(1).timeout
-	animation_player.play("fade_in")
-	SceneManager.fade_out()
-	await get_tree().create_timer(1).timeout
-	animation_player.play("blink")
+	pass
 	
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_accept") and on_title:
-		on_title = false
-		animation_player.play("fade_out_label")
-		main_menu.show_menu()
+	if not on_title:
+		return
+	if event.is_action_pressed("ui_accept"):
+		show_menu()
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				show_menu()
+				print("Left button was clicked at ", event.position)
+		else:
+			print("Left button was released")
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			show_menu()
+			print("Wheel down")
+
+func show_menu():
+	on_title = false
+	animation_player.play("fade_out_label")
+	main_menu.show_menu()

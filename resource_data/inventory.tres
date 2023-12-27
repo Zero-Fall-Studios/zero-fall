@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://5ty56lylab6q"]
+
+[ext_resource type="Resource" uid="uid://cfc4rj3eghbjo" path="res://resource_data/equipment.tres" id="1_1cv6t"]
+[ext_resource type="Script" path="res://scripts/inventory/inventory.gd" id="1_s4hws"]
+
+[resource]
+script = ExtResource("1_s4hws")
+money = 0
+max_slots = 50
+equipment = ExtResource("1_1cv6t")

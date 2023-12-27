@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemAtlas" load_steps=3 format=3 uid="uid://bc3cyyghmykbx"]
+
+[ext_resource type="Script" path="res://scripts/inventory/item_atlas.gd" id="1_6oerr"]
+[ext_resource type="Texture2D" uid="uid://b8ssnbmgsi1ky" path="res://assets/items/WeaponsAndArmor.png" id="2_41qoq"]
+
+[resource]
+script = ExtResource("1_6oerr")
+texture = ExtResource("2_41qoq")
+json_src = "res://resource_data/item_atlases/test-items.json"
+interval = 16
+width = 8
+height = 4
+item_index = 4

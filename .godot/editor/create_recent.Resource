@@ -1,3 +1,2 @@
-CanvasItemMaterial
-Shader
-Theme
+ItemAtlas
+Inventory

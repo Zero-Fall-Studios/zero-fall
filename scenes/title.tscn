@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4t80g7o75i0y"]
+[gd_scene load_steps=19 format=3 uid="uid://b4t80g7o75i0y"]
 
 [ext_resource type="Script" path="res://scenes/title.gd" id="1_2x5ek"]
-[ext_resource type="Texture2D" uid="uid://b7xqeyg1tvxsp" path="res://assets/zero-fall-logo-256.png" id="1_fk4b5"]
+[ext_resource type="Texture2D" uid="uid://b7xqeyg1tvxsp" path="res://assets/brand/zero-fall-logo-256.png" id="1_fk4b5"]
 [ext_resource type="Material" uid="uid://b0qqm2c5oudfq" path="res://materials/smooth_pixel_shader_material.tres" id="1_s6nqu"]
 [ext_resource type="Texture2D" uid="uid://g2vs3mhdm0h8" path="res://assets/background/Background.png" id="2_4ovk8"]
 [ext_resource type="Texture2D" uid="uid://bx0ftvbk8oecr" path="res://assets/background/Mountains.png" id="4_yuas0"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://c0u0bgqrc58a4" path="res://assets/background/Clouds.png" id="6_c6usv"]
 [ext_resource type="PackedScene" uid="uid://dr1x22kdg8oeb" path="res://scenes/ui/main_menu.tscn" id="9_2ociq"]
 [ext_resource type="AudioStream" uid="uid://jy1wcbpiriw3" path="res://assets/audio/Zero Fall.ogg" id="9_vvk4f"]
+[ext_resource type="Script" path="res://scripts/events/event_system.gd" id="10_y6oh8"]
+[ext_resource type="Script" path="res://scripts/events/event_scene.gd" id="11_rsxg3"]
+[ext_resource type="Script" path="res://scripts/events/event_animation.gd" id="12_0mi2b"]
 
 [sub_resource type="Animation" id="Animation_lw265"]
 length = 0.001
@@ -211,9 +214,34 @@ texture = ExtResource("6_c6usv")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_vvk4f")
-autoplay = true
 bus = &"Music"
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="MainMenu" parent="CanvasLayer2" instance=ExtResource("9_2ociq")]
+
+[node name="EventSystem" type="Node" parent="."]
+script = ExtResource("10_y6oh8")
+run_events_on_ready = true
+
+[node name="ShowBlackscreen" type="Node" parent="EventSystem"]
+script = ExtResource("11_rsxg3")
+show_black_screen = true
+time_to_wait_after = 1.0
+
+[node name="FadeIn" type="Node" parent="EventSystem" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("12_0mi2b")
+animation_player = NodePath("../../AnimationPlayer")
+animation_name = "fade_in"
+event_name = "FadeIn"
+
+[node name="SceneFadeOut" type="Node" parent="EventSystem"]
+script = ExtResource("11_rsxg3")
+fade_out = true
+time_to_wait_after = 1.0
+
+[node name="Blink" type="Node" parent="EventSystem" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("12_0mi2b")
+animation_player = NodePath("../../AnimationPlayer")
+animation_name = "blink"
+event_name = "Blink"

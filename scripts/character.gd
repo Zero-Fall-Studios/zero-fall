@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export_category("Movement")
 @export var move_speed: float = 400
 @export var run_modifier: float = 1.5
+@export var MAX_SPEED = 2000
 
 @export_category("Jumping")
 @export var jumps: int = 1
@@ -30,6 +31,9 @@ extends CharacterBody2D
 @export var controls : Node
 @export var using_controller = false
 
+@export_category("Inventory")
+@export var inventory : Inventory
+
 @export var lava_tilemap : TileMap
 
 @onready var jump_audio_player : AudioStreamPlayer = $JumpAudioPlayer
@@ -42,9 +46,11 @@ var is_animation_running : bool = false
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var movement : float = 0
 var direction : Vector2 = Vector2(1, 0)
+var velocity_modifier : Vector2 = Vector2(0, 0)
 var facing_direction : float = 1
 var paralized : bool = false
 var health = 100
+var weapons
 
 enum Abilities {
 	Walk,
@@ -64,6 +70,8 @@ func _ready():
 	state_machine.init(self)
 	animation_player.animation_started.connect(_on_animation_started)
 	animation_player.animation_finished.connect(_on_animation_finished)
+
+	weapons = get_tree().get_nodes_in_group("weapon")
 
 	if turn_left_on_start:
 		change_dir(-1)
@@ -129,6 +137,12 @@ func apply_movement(_delta: float):
 
 	velocity.x = speed * friction
 
+	velocity += velocity_modifier
+
+	# Manage friction and refresh jump and stuff
+	velocity.y = clamp(velocity.y, -MAX_SPEED, MAX_SPEED)	# Make sure we are in our limits
+	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
+
 	handle_flip()
 
 func handle_flip():
@@ -168,6 +182,11 @@ func get_movement():
 	if paralized:
 		return 0
 	return controls.get_input_movement(self)
+
+func get_input():
+	if paralized:
+		return 0
+	return controls.get_input()
 
 func is_idle():
 	return is_on_floor() and not is_moving() and not is_on_wall()
@@ -217,11 +236,11 @@ func get_input_just_pressed(abilities: Array[Abilities]) -> State:
 	
 	if Abilities.AttackPrimary in abilities:
 		if Input.is_action_just_pressed('attack_primary'):
-			return state_machine.states.get("AttackPrimaryState")
+			return handle_attack_primary()
 
 	if Abilities.AttackSecondary in abilities:
 		if Input.is_action_just_pressed('attack_secondary'):
-			return state_machine.states.get("AttackSecondaryState")
+			return handle_attack_secondary()
 
 	if Abilities.Crouch in abilities:
 		if Input.is_action_just_pressed('crouch'):
@@ -269,3 +288,31 @@ func paralize(p : bool):
 		animation_player.pause()
 	else:
 		animation_player.play()
+
+func get_weapon_primary():
+	if not inventory.equipment.left_hand:
+		return null
+	for weapon in weapons:
+		if weapon.name == inventory.equipment.left_hand.name:
+			return inventory.equipment.left_hand
+	return null
+
+func get_weapon_secondary():
+	if not inventory.equipment.right_hand:
+		return null
+	for weapon in weapons:
+		if weapon.name == inventory.equipment.right_hand.name:
+			return inventory.equipment.right_hand
+	return null
+
+func handle_attack_primary():
+	var weapon_primary = get_weapon_primary()
+	if not weapon_primary:
+		return null
+	return state_machine.states.get(weapon_primary.state_name)
+
+func handle_attack_secondary():
+	var weapon_secondary = get_weapon_secondary()
+	if not weapon_secondary:
+		return null
+	return state_machine.states.get(weapon_secondary.state_name)
