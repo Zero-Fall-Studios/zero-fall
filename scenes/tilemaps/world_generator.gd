@@ -12,13 +12,19 @@ var moisture = FastNoiseLite.new()
 var altitude = FastNoiseLite.new()
 
 func _ready():
+	generate_chunk()
+
+func _unhandled_input(_event):
+	if Input.is_action_just_pressed("generate_world"):
+		print("Generating World")
+		clear()
+		generate_chunk()
+
+func generate_chunk():
 	temperature.seed = randi();
 	moisture.seed = randi();
 	altitude.seed = randi();
 	altitude.frequency = 0.05
-	generate_chunk()
-	
-func generate_chunk():
 	var path = []
 	var tile_position = local_to_map(position)
 	var center_x = tile_position.x - width / 2

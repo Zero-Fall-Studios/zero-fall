@@ -17,3 +17,5 @@ res://scripts/autoload/game/game_audio_manager.gd
 res://scripts/inventory/inventory.gd
 res://scripts/state_machine/state.gd
 res://scenes/player/weapons/grapple/grapple.gd
+res://scenes/tilemaps/world_generator.gd
+res://scenes/projectiles/bullet.gd
