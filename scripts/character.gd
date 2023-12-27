@@ -149,14 +149,18 @@ func handle_flip():
 	if using_controller:
 		if velocity.x > 0:
 			scale.x = scale.y * 1
+			facing_direction = 1
 		elif velocity.x < 0:
 			scale.x = scale.y * -1
+			facing_direction = -1
 	else:
 		var mouse_pos = get_global_mouse_position()
 		if mouse_pos.x < position.x:
 			scale.x = scale.y * -1
+			facing_direction = -1
 		else:
 			scale.x = scale.y * 1
+			facing_direction = 1
 
 func change_dir(dir: float):
 	if dir != facing_direction:

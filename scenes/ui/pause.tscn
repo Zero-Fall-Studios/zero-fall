@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0h6perk438yr"]
+[gd_scene load_steps=3 format=3 uid="uid://c0h6perk438yr"]
 
 [ext_resource type="Script" path="res://scenes/ui/pause.gd" id="1_nhbox"]
+[ext_resource type="PackedScene" uid="uid://foes3g2qe56u" path="res://scenes/ui/settings_menu.tscn" id="2_55g7j"]
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
@@ -40,9 +41,18 @@ text = "Pause"
 layout_mode = 2
 text = "Settings"
 
+[node name="ButtonBack" type="Button" parent="MarginContainer/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back
+"
+
 [node name="ButtonQuit" type="Button" parent="MarginContainer/Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
+[node name="SettingsMenu" parent="." instance=ExtResource("2_55g7j")]
+hide_on_start = true
+
 [connection signal="pressed" from="MarginContainer/Panel/CenterContainer/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/CenterContainer/VBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/CenterContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

@@ -14,6 +14,5 @@ func _ready():
 
 func run_events():
   for event in events:
-    print("Running event: " + event.event_name)
     await event.run()
 

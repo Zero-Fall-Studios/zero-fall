@@ -141,7 +141,6 @@ libraries = {
 }
 
 [node name="SettingsMenu" parent="." instance=ExtResource("2_sqqoi")]
-visible = false
 hide_on_start = true
 
 [connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]

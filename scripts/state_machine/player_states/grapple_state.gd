@@ -7,16 +7,25 @@ extends State
 
 var chain_velocity := Vector2(0,0)
 
+func process_input(_event: InputEvent) -> State:
+	return parent.get_input_just_pressed([
+			parent.Abilities.Jump, 
+			parent.Abilities.AttackPrimary, 
+			parent.Abilities.AttackSecondary, 
+		]
+	)
+
 func enter() -> void:
 	super()
+	parent.landed_on_floor()
+	var shoot_position = Vector2(1, 0)
 	if using_controller:
-		var input = parent.get_input()
-		if input != Vector2.ZERO:
-			grapple.shoot(input)
-		else:
-			grapple.shoot(Vector2(1, 0))
+		shoot_position = parent.get_input()
 	else:
-		grapple.shoot(parent.get_local_mouse_position())
+		shoot_position = parent.get_local_mouse_position()
+
+	shoot_position.x *= parent.facing_direction	
+	grapple.shoot(shoot_position)
 
 func process_physics(delta: float) -> State:
 	parent.apply_gravity(delta)

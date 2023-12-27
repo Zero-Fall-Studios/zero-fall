@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnedw2u7anj85"]
+
+[ext_resource type="Script" path="res://scripts/autoload/game/game_audio.gd" id="1_f13be"]
+[ext_resource type="AudioStream" uid="uid://jy1wcbpiriw3" path="res://assets/audio/Zero Fall.ogg" id="2_x0ge0"]
+
+[node name="GameAudio" type="Node" node_paths=PackedStringArray("playlist")]
+process_mode = 3
+script = ExtResource("1_f13be")
+playlist = [NodePath("ZeroFall")]
+
+[node name="ZeroFall" type="AudioStreamPlayer" parent="." groups=["playlist"]]
+stream = ExtResource("2_x0ge0")
+bus = &"Music"

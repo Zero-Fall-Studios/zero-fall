@@ -38,6 +38,8 @@ shape = SubResource("CapsuleShape2D_wt525")
 
 [node name="GrappleShootAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_nuxn7")
+bus = &"Effects"
 
 [node name="GrappleStickAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_5k827")
+bus = &"Effects"

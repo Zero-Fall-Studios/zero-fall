@@ -5,10 +5,11 @@ class_name SettingsMenu
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 
+signal on_close
+
 func _ready():
 	if hide_on_start:
 		hide()
-		fade_out()
 	
 func fade_in():
 	show()
@@ -18,6 +19,7 @@ func fade_out():
 	animation_player.play("fade_out")
 	await animation_player.animation_finished
 	hide()
+	on_close.emit()
 
 func _on_button_back_pressed():
 	fade_out()

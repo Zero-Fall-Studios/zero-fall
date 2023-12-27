@@ -28,6 +28,7 @@ SceneManager="*res://scripts/autoload/scene_manager.tscn"
 CameraTransition="*res://scripts/autoload/camera_transition.tscn"
 Dialogue="*res://scripts/autoload/dialogue.tscn"
 PickupSignalBus="*res://scripts/autoload/pickup_signal_bus.gd"
+GameAudio="*res://scripts/autoload/game/game_audio.tscn"
 
 [display]
 

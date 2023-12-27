@@ -1,9 +1,9 @@
-GrappleState
+EventAudio
 Node
+GrappleState
 Sprite2D
 CollisionShape2D
 Pickup
-EventSystem
 EventAnimation
 Event
 EventCameraTransition

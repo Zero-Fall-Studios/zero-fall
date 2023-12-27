@@ -12,8 +12,7 @@ func _ready():
 	if Engine.is_editor_hint():
 		label.text = label_text
 		
-	var percent = 0
-	#  GameManager.game_data.bus_idx_volume[bus_index];
+	var percent = GameManager.game_data.bus_idx_volume[bus_index];
 	slider.set_value_no_signal(percent)
 
 func _on_h_slider_value_changed(value):
