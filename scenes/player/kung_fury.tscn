@@ -285,11 +285,12 @@ _data = {
 collision_mask = 2
 script = ExtResource("1_tm4rn")
 move_speed = 100.0
+run_modifier = 2.0
 jumps = 2
-jump_force = 500.0
+jump_force = 400.0
 wall_friction = 1.0
 ground_friction = 1.0
-air_friction = 1.5
+air_friction = 1.0
 spawn_on_start = true
 controls = NodePath("Controls")
 inventory = ExtResource("2_05kkw")
@@ -368,7 +369,7 @@ animation_name = "Land"
 [node name="GrappleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("grapple")]
 script = ExtResource("20_fkiyg")
 grapple = NodePath("../../Grapple")
-CHAIN_PULL = 25
+CHAIN_PULL = 35
 animation_name = "Walk"
 
 [node name="Controls" type="Node" parent="."]

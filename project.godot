@@ -32,8 +32,8 @@ GameAudio="*res://scripts/autoload/game/game_audio.tscn"
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=180
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
@@ -118,3 +118,6 @@ crouch={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+viewport/hdr_2d=true
+textures/size/viewport_height=360
+textures/size/viewport_width=640

@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://h6kdqde30046"]
+[gd_scene load_steps=18 format=3 uid="uid://h6kdqde30046"]
 
-[ext_resource type="Material" uid="uid://b0qqm2c5oudfq" path="res://materials/smooth_pixel_shader_material.tres" id="1_wwfot"]
 [ext_resource type="Texture2D" uid="uid://g2vs3mhdm0h8" path="res://assets/background/Background.png" id="2_jqgpr"]
+[ext_resource type="Texture2D" uid="uid://cyxuhg6ngx12f" path="res://assets/background/Background Black.png" id="2_lhoh0"]
 [ext_resource type="Texture2D" uid="uid://dybr6d0i5sg6e" path="res://assets/background/Sun.png" id="3_glqci"]
 [ext_resource type="Texture2D" uid="uid://bx0ftvbk8oecr" path="res://assets/background/Mountains.png" id="4_5maap"]
 [ext_resource type="Texture2D" uid="uid://2cdxa1hi4n48" path="res://assets/background/Stars.png" id="5_4rnxx"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c0h6perk438yr" path="res://scenes/ui/pause.tscn" id="11_posp3"]
 [ext_resource type="PackedScene" uid="uid://bacc0kqeepab1" path="res://scripts/inventory/pickup.tscn" id="12_rlv35"]
 [ext_resource type="Resource" uid="uid://c82hjof2scyef" path="res://resource_data/item_atlases/items.tres" id="13_24pks"]
+[ext_resource type="Texture2D" uid="uid://0rwwny341kjg" path="res://assets/background/LightMask.png" id="15_qsa0o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwaok"]
 texture = ExtResource("9_x5ob8")
@@ -37,75 +38,124 @@ custom_data_layer_0/name = "Type"
 custom_data_layer_0/type = 21
 sources/0 = SubResource("TileSetAtlasSource_nwaok")
 
+[sub_resource type="Environment" id="Environment_5iqv1"]
+background_mode = 3
+glow_enabled = true
+glow_levels/7 = 2.17
+glow_intensity = 0.28
+glow_strength = 0.76
+glow_bloom = 0.33
+
 [node name="CyberPlanet" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-7, -37)
-motion_scale = Vector2(0.9, 0.9)
 motion_mirroring = Vector2(640, 360)
 
 [node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture_filter = 2
-material = ExtResource("1_wwfot")
-position = Vector2(3, 91)
-texture = ExtResource("2_jqgpr")
-
-[node name="Sun" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-visible = false
-material = ExtResource("1_wwfot")
-position = Vector2(35, 99)
-texture = ExtResource("3_glqci")
-
-[node name="Mountains" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-material = ExtResource("1_wwfot")
-position = Vector2(-6, 92)
-texture = ExtResource("4_5maap")
+texture = ExtResource("2_lhoh0")
+centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.6, 0.6)
-motion_mirroring = Vector2(640, 360)
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(0, -67)
+texture = ExtResource("2_jqgpr")
+centered = false
+
+[node name="Sun" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+modulate = Color(26.036, 1.183, 1.775, 1)
+position = Vector2(42, 29)
+texture = ExtResource("3_glqci")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(0, -87)
-motion_scale = Vector2(0.95, 0.95)
-motion_mirroring = Vector2(640, 360)
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(640, 0)
 
 [node name="Stars" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-texture_filter = 2
-material = ExtResource("1_wwfot")
-position = Vector2(1, 31)
+modulate = Color(4.142, 2.959, 5.917, 1)
+position = Vector2(235, 56)
+texture = ExtResource("5_4rnxx")
+
+[node name="Stars2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color(4.142, 2.959, 5.917, 1)
+position = Vector2(235, -96)
+texture = ExtResource("5_4rnxx")
+
+[node name="Stars3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color(4.142, 2.959, 5.917, 1)
+position = Vector2(335.5, -28.5)
+texture = ExtResource("5_4rnxx")
+
+[node name="Stars4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color(4.142, 2.959, 5.917, 1)
+position = Vector2(335.5, -180.5)
+texture = ExtResource("5_4rnxx")
+
+[node name="Stars5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color(4.142, 2.959, 5.917, 1)
+position = Vector2(554.5, 21)
+texture = ExtResource("5_4rnxx")
+
+[node name="Stars6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color(4.142, 2.959, 5.917, 1)
+position = Vector2(554.5, -131)
+texture = ExtResource("5_4rnxx")
+
+[node name="Stars7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color(4.142, 2.959, 5.917, 1)
+position = Vector2(655, -63.5)
+texture = ExtResource("5_4rnxx")
+
+[node name="Stars8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color(4.142, 2.959, 5.917, 1)
+position = Vector2(655, -215.5)
 texture = ExtResource("5_4rnxx")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(1, 5)
-motion_scale = Vector2(0.95, 0.95)
-motion_mirroring = Vector2(640, 360)
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(640, 0)
 
-[node name="Clouds" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-texture_filter = 2
-material = ExtResource("1_wwfot")
-position = Vector2(2, -20)
+[node name="Mountains" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+modulate = Color(1.24, 1, 1.47, 1)
+position = Vector2(-1, 74)
+texture = ExtResource("4_5maap")
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Clouds" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2(328, -31)
 texture = ExtResource("6_gidkx")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-45, 52)
-position_smoothing_enabled = true
+[node name="Clouds2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2(454, -114)
+texture = ExtResource("6_gidkx")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-rotation = -0.380482
+rotation = -0.685914
 range_layer_min = -100
-range_layer_max = 100
 shadow_enabled = true
-shadow_filter = 2
-shadow_filter_smooth = 1.9
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-171, 108)
+position_smoothing_enabled = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(1, 0.678431, 0.960784, 1)
+color = Color(0.501961, 0.501961, 0.501961, 1)
 
 [node name="WorldGenerator" parent="." instance=ExtResource("8_mncuo")]
-layer_0/tile_data = PackedInt32Array(589823, 131072, 7, 589822, 131072, 7, 589821, 131072, 7, 589820, 131072, 7, 589819, 131072, 7, 589818, 131072, 7, 589817, 65536, 6, 524281, 0, 5, 458745, 0, 4)
+layer_0/tile_data = PackedInt32Array(589809, 262144, 5, 589810, 655360, 4, 589811, 655360, 4, 589812, 655360, 4, 589813, 655360, 4, 589814, 655360, 4, 589815, 655360, 4, 589816, 458752, 5, 655352, 720896, 6, 655351, 327680, 6, 655350, 589824, 7, 655349, 589824, 7, 655348, 589824, 7, 655347, 589824, 7, 655346, 393216, 6, 655345, 524288, 5, 720881, 524288, 5, 786417, 262144, 6, 851953, 0, 5, 720882, 720896, 6, 786418, 720896, 7, 720888, 720896, 6, 786424, 458752, 6, 851960, 0, 5, 720887, 524288, 5, 786423, 524288, 7, 917489, 0, 6, 917496, 0, 6, 524273, 0, 4, 524280, 0, 4)
 
 [node name="TileMapLava" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_1h5ax")
@@ -118,14 +168,28 @@ player = NodePath("../KungFury")
 [node name="Pause" parent="UI" instance=ExtResource("11_posp3")]
 
 [node name="KungFury" parent="." node_paths=PackedStringArray("lava_tilemap") instance=ExtResource("11_6ydke")]
-position = Vector2(-45, 52)
+position = Vector2(-171, 108)
 lava_tilemap = NodePath("../TileMapLava")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="KungFury"]
 remote_path = NodePath("../../Camera2D")
 
+[node name="PointLight2D" type="PointLight2D" parent="KungFury"]
+visible = false
+energy = 2.07
+range_layer_min = -100
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 5.0
+texture = ExtResource("15_qsa0o")
+texture_scale = 4.73
+
 [node name="Pickup" parent="." instance=ExtResource("12_rlv35")]
-position = Vector2(-76, 15)
+visible = true
+position = Vector2(-57, 98)
 item_atlas = ExtResource("13_24pks")
 autospawn = true
 respawn_time = 5.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5iqv1")

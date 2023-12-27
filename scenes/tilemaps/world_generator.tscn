@@ -1,16 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0sa7e0u07qa3"]
+[gd_scene load_steps=12 format=3 uid="uid://b0sa7e0u07qa3"]
 
-[ext_resource type="Material" uid="uid://b0qqm2c5oudfq" path="res://materials/smooth_pixel_shader_material.tres" id="1_55wm2"]
 [ext_resource type="Texture2D" uid="uid://dhb8hc3cikj5p" path="res://assets/Tilesets/level-1-tiles.png" id="2_wndvg"]
 [ext_resource type="Script" path="res://scenes/tilemaps/world_generator.gd" id="3_kjowq"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xl0dw"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m7ufu"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o10h2"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vbyq0"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hg3rd"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hm8vk"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8soed"]
@@ -21,7 +29,7 @@ texture = ExtResource("2_wndvg")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
-0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m7ufu")
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_xl0dw")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -657,7 +665,7 @@ texture = ExtResource("2_wndvg")
 0:4/0 = 0
 0:4/0/terrain_set = 0
 0:4/0/terrain = 1
-0:4/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_vbyq0")
+0:4/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_o10h2")
 0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:4/0/physics_layer_0/angular_velocity = 0.0
 0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -1277,6 +1285,11 @@ texture = ExtResource("2_wndvg")
 14:6/0/physics_layer_0/angular_velocity = 0.0
 14:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 0, 8, 8, -8, 8)
 14:6/0/custom_data_0 = &"Ground"
+0:8/0 = 0
+0:8/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_hm8vk")
+0:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:8/0/physics_layer_0/angular_velocity = 0.0
+0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_cmh1a"]
 occlusion_layer_0/light_mask = 1
@@ -1292,9 +1305,7 @@ custom_data_layer_0/type = 21
 sources/0 = SubResource("TileSetAtlasSource_yy1o1")
 
 [node name="WorldGenerator" type="TileMap"]
-texture_filter = 2
-material = ExtResource("1_55wm2")
-position = Vector2(11, -61)
+modulate = Color(1.53, 1, 1.54, 1)
 tile_set = SubResource("TileSet_cmh1a")
 format = 2
 layer_0/tile_data = PackedInt32Array(851975, 720896, 7, 786439, 720896, 6, 720903, 720896, 6, 655367, 720896, 6, 589831, 720896, 6, 524295, 720896, 4, 851974, 589824, 7, 786438, 589824, 6, 720902, 589824, 6, 655366, 589824, 6, 589830, 589824, 6, 524294, 655360, 4, 851973, 589824, 7, 786437, 589824, 6, 720901, 589824, 6, 655365, 589824, 6, 589829, 589824, 6, 524293, 655360, 4, 851972, 589824, 7, 786436, 589824, 6, 720900, 589824, 6, 655364, 589824, 6, 589828, 589824, 6, 524292, 655360, 4, 851971, 589824, 7, 786435, 589824, 6, 720899, 589824, 6, 655363, 589824, 6, 589827, 589824, 6, 524291, 655360, 4, 851970, 589824, 7, 786434, 589824, 6, 720898, 589824, 6, 655362, 589824, 6, 589826, 589824, 6, 524290, 655360, 4, 851969, 589824, 7, 786433, 589824, 6, 720897, 589824, 6, 655361, 589824, 6, 589825, 589824, 6, 524289, 655360, 4, 851968, 589824, 7, 786432, 589824, 6, 720896, 589824, 6, 655360, 589824, 6, 589824, 589824, 6, 524288, 655360, 4, 917503, 589824, 7, 851967, 589824, 6, 786431, 589824, 6, 720895, 589824, 6, 655359, 589824, 6, 589823, 655360, 4, 917502, 589824, 7, 851966, 589824, 6, 786430, 589824, 6, 720894, 589824, 6, 655358, 589824, 6, 589822, 655360, 4, 917501, 589824, 7, 851965, 589824, 6, 786429, 589824, 6, 720893, 589824, 6, 655357, 589824, 6, 589821, 655360, 4, 917500, 589824, 7, 851964, 589824, 6, 786428, 589824, 6, 720892, 589824, 6, 655356, 589824, 6, 589820, 655360, 4, 917499, 589824, 7, 851963, 589824, 6, 786427, 589824, 6, 720891, 589824, 6, 655355, 589824, 6, 589819, 655360, 4, 917498, 589824, 7, 851962, 589824, 6, 786426, 589824, 6, 720890, 589824, 6, 655354, 589824, 6, 589818, 655360, 4, 917497, 524288, 7, 851961, 524288, 5, 786425, 524288, 5, 720889, 524288, 5, 655353, 524288, 5, 589817, 524288, 4)

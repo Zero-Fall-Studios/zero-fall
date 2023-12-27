@@ -1,3 +1,9 @@
+DirectionalLight2D
+ParallaxLayer
+LightOccluder2D
+TileMap
+PointLight2D
+WorldEnvironment
 EventAudio
 Node
 GrappleState
@@ -6,4 +12,3 @@ CollisionShape2D
 Pickup
 EventAnimation
 Event
-EventCameraTransition
