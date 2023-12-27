@@ -15,6 +15,8 @@ func _unhandled_input(event):
 		return
 	if event.is_action_pressed("ui_accept"):
 		show_menu()
+	if event.is_action_pressed("submit"):
+		show_menu()
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:

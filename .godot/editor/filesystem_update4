@@ -24,3 +24,4 @@ res://scenes/player/weapons/grapple/grapple.tscn
 res://scripts/state_machine/player_states/damage_state.gd
 res://scripts/state_machine/player_states/idle_state.gd
 res://scripts/state_machine/state.gd
+res://scenes/title.gd
