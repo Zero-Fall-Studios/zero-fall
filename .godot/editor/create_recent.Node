@@ -1,3 +1,8 @@
+DieState
+CollisionShape2D
+SpawnPoint
+Node
+HandgunState
 CheckBox
 DirectionalLight2D
 ParallaxLayer
@@ -6,10 +11,5 @@ TileMap
 PointLight2D
 WorldEnvironment
 EventAudio
-Node
-GrappleState
 Sprite2D
-CollisionShape2D
 Pickup
-EventAnimation
-Event

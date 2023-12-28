@@ -4,6 +4,7 @@ extends Node
 @export var initial_state : State
 
 var current_state : State
+var prev_state : State
 var states : Dictionary = {}
 
 func init(parent) -> void:
@@ -19,6 +20,7 @@ func change_state(new_state: State) -> void:
 		return
 	if current_state:
 		current_state.exit()
+	prev_state = current_state
 	current_state = new_state
 	current_state.enter()
 		

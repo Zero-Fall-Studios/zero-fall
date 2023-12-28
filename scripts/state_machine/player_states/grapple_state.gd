@@ -56,8 +56,13 @@ func process_physics(delta: float) -> State:
 	parent.apply_movement(delta)
 	parent.move()
 
-	if not Input.is_action_pressed('attack_primary'):
-		return state_machine.states.get("FallState")
+	if parent.inventory.equipment.left_hand and parent.inventory.equipment.left_hand.name == "Grapple":
+		if not Input.is_action_pressed('attack_primary'):
+			return state_machine.states.get("FallState")
+	
+	if parent.inventory.equipment.right_hand and parent.inventory.equipment.right_hand.name == "Grapple":
+		if not Input.is_action_pressed('attack_secondary'):
+			return state_machine.states.get("FallState")
 
 	return null
 

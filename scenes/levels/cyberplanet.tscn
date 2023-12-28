@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://h6kdqde30046"]
+[gd_scene load_steps=21 format=3 uid="uid://h6kdqde30046"]
 
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_d0nim"]
 [ext_resource type="Texture2D" uid="uid://g2vs3mhdm0h8" path="res://assets/background/Background.png" id="2_jqgpr"]
 [ext_resource type="Texture2D" uid="uid://cyxuhg6ngx12f" path="res://assets/background/Background Black.png" id="2_lhoh0"]
 [ext_resource type="Texture2D" uid="uid://dybr6d0i5sg6e" path="res://assets/background/Sun.png" id="3_glqci"]
@@ -14,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bacc0kqeepab1" path="res://scripts/inventory/pickup.tscn" id="12_rlv35"]
 [ext_resource type="Resource" uid="uid://c82hjof2scyef" path="res://resource_data/item_atlases/items.tres" id="13_24pks"]
 [ext_resource type="Texture2D" uid="uid://0rwwny341kjg" path="res://assets/background/LightMask.png" id="15_qsa0o"]
+[ext_resource type="Script" path="res://scripts/spawn_point.gd" id="16_vup5h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwaok"]
 texture = ExtResource("9_x5ob8")
@@ -46,7 +48,11 @@ glow_intensity = 0.28
 glow_strength = 0.76
 glow_bloom = 0.33
 
-[node name="CyberPlanet" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pkoo"]
+
+[node name="CyberPlanet" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_d0nim")
+player = NodePath("KungFury")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -186,10 +192,25 @@ texture_scale = 4.73
 
 [node name="Pickup" parent="." instance=ExtResource("12_rlv35")]
 visible = true
-position = Vector2(-57, 98)
+position = Vector2(-229, 56)
 item_atlas = ExtResource("13_24pks")
 autospawn = true
 respawn_time = 5.0
 
+[node name="Pickup2" parent="." instance=ExtResource("12_rlv35")]
+visible = true
+position = Vector2(-119, 53)
+item_atlas = ExtResource("13_24pks")
+item_index = 1
+autospawn = true
+respawn_time = 10.0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5iqv1")
+
+[node name="SpawnPoint" type="Area2D" parent="." groups=["spawn_point"]]
+position = Vector2(-172, 84)
+script = ExtResource("16_vup5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnPoint"]
+shape = SubResource("RectangleShape2D_1pkoo")

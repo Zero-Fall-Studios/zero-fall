@@ -48,6 +48,7 @@ _data = {
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_ip6bs")
+speed = 10
 weight = 4
 ground_break = ExtResource("2_0fiyb")
 

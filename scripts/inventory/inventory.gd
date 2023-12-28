@@ -31,10 +31,12 @@ func add(coords: Vector2, new_items: Array[Item]):
 		if _item is Equipable:
 			var equipable = _item as Equipable
 			if equipment.left_hand == null:
+				print("Equip left hand")
 				equipment.left_hand = equipable
 				equipable.equip(coords)
 				continue
 			elif equipment.right_hand == null:
+				print("Equip right hand")
 				equipment.right_hand = equipable
 				equipable.equip(coords)
 				continue
@@ -80,6 +82,8 @@ func add_money(amount: int):
 	money += amount
 	
 func in_inventory(item: Item):
+	if item == null:
+		return false
 	var index = items.find(func(i): return i.id == item.id)
 	return index != -1
 	

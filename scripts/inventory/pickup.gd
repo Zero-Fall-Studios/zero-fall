@@ -20,6 +20,7 @@ class_name Pickup
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var spawn_timer: Timer = $SpawnTimer
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 var is_mouse_over = false
 var center : Vector2
@@ -37,6 +38,7 @@ func _ready():
 	center.y = sprite.get_rect().size.y / 2
 	
 	hide()
+	collision_shape.disabled = true
 	
 	spawn_timer.wait_time = respawn_time
 	spawn_timer.one_shot = spawn_once_per_level
@@ -54,6 +56,7 @@ func _pickup_handler(coords : Vector2):
 	PickupSignalBus.pickup_event.emit(coords, items)
 			
 	hide()
+	collision_shape.disabled = true
 	
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
@@ -85,4 +88,5 @@ func _set_pickup_texture():
 
 func _spawn():
 	show()
+	collision_shape.disabled = false
 	spawn_timer.stop()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://darg1w8l3n8cw"]
+[gd_scene load_steps=43 format=3 uid="uid://darg1w8l3n8cw"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_tm4rn"]
 [ext_resource type="Resource" uid="uid://5ty56lylab6q" path="res://resource_data/inventory.tres" id="2_05kkw"]
@@ -20,7 +20,10 @@
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/fall_state.gd" id="15_kvvu4"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/land_state.gd" id="16_i5n88"]
 [ext_resource type="PackedScene" uid="uid://l0xfa6mufnom" path="res://scenes/player/weapons/grapple/grapple.tscn" id="19_280mi"]
+[ext_resource type="Script" path="res://scripts/state_machine/player_states/handgun_state.gd" id="20_dx7ba"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/grapple_state.gd" id="20_fkiyg"]
+[ext_resource type="PackedScene" uid="uid://dfijt5s44i68t" path="res://scenes/projectiles/bullet.tscn" id="21_m06pa"]
+[ext_resource type="Script" path="res://scripts/state_machine/player_states/die_state.gd" id="22_s3rt3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8wdf"]
 size = Vector2(6, 21)
@@ -263,8 +266,25 @@ tracks/0/keys = {
 "values": [2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_inhm0"]
+resource_name = "Die"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_42iyb"]
 _data = {
+"Die": SubResource("Animation_inhm0"),
 "DownThrust": SubResource("Animation_ouvh7"),
 "Fall": SubResource("Animation_sxn3m"),
 "Flip": SubResource("Animation_mt23h"),
@@ -291,7 +311,6 @@ jump_force = 400.0
 wall_friction = 1.0
 ground_friction = 1.0
 air_friction = 1.0
-spawn_on_start = true
 controls = NodePath("Controls")
 inventory = ExtResource("2_05kkw")
 
@@ -321,15 +340,19 @@ position = Vector2(8, 3)
 
 [node name="JumpAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_lvkt7")
+volume_db = -20.057
 
 [node name="ShootAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_xy72q")
+volume_db = -15.6
 
 [node name="LandAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_71iah")
+volume_db = -20.057
 
 [node name="ErosionAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_30ump")
+volume_db = -25.257
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("9_4xkfp")
@@ -350,21 +373,24 @@ animation_name = "Walk"
 script = ExtResource("12_mw44l")
 animation_name = "Run"
 
-[node name="JumpState" type="Node" parent="StateMachine"]
+[node name="JumpState" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_player")]
 script = ExtResource("13_568ox")
 animation_name = "Jump"
+audio_player = NodePath("../../JumpAudioPlayer")
 
-[node name="JumpFlipState" type="Node" parent="StateMachine"]
+[node name="JumpFlipState" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_player")]
 script = ExtResource("14_rqa5n")
 animation_name = "Flip"
+audio_player = NodePath("../../JumpAudioPlayer")
 
 [node name="FallState" type="Node" parent="StateMachine"]
 script = ExtResource("15_kvvu4")
 animation_name = "Fall"
 
-[node name="LandState" type="Node" parent="StateMachine"]
+[node name="LandState" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_player")]
 script = ExtResource("16_i5n88")
 animation_name = "Land"
+audio_player = NodePath("../../LandAudioPlayer")
 
 [node name="GrappleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("grapple")]
 script = ExtResource("20_fkiyg")
@@ -372,7 +398,20 @@ grapple = NodePath("../../Grapple")
 CHAIN_PULL = 35
 animation_name = "Walk"
 
+[node name="HandgunState" type="Node" parent="StateMachine" node_paths=PackedStringArray("muzzle", "audio_player")]
+script = ExtResource("20_dx7ba")
+Bullet = ExtResource("21_m06pa")
+muzzle = NodePath("../../Muzzle")
+animation_name = "ShootRight"
+audio_player = NodePath("../../ShootAudioPlayer")
+
+[node name="DieState" type="Node" parent="StateMachine"]
+script = ExtResource("22_s3rt3")
+animation_name = "Die"
+
 [node name="Controls" type="Node" parent="."]
 script = ExtResource("15_g26ov")
 
 [node name="Grapple" parent="." instance=ExtResource("19_280mi")]
+
+[node name="Handgun" type="Node" parent="." groups=["weapon"]]

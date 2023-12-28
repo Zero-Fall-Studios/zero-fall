@@ -51,6 +51,8 @@ var facing_direction : float = 1
 var paralized : bool = false
 var health = 100
 var weapons
+var spawn_position : Vector2
+var is_dead : bool = false
 
 enum Abilities {
 	Walk,
@@ -92,13 +94,14 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 
-	if lava_tilemap:
-		var cell = lava_tilemap.local_to_map(position)
-		var lava_tile_data = lava_tilemap.get_cell_tile_data(0, cell)
+	if not is_dead:
+		if lava_tilemap:
+			var cell = lava_tilemap.local_to_map(position)
+			var lava_tile_data = lava_tilemap.get_cell_tile_data(0, cell)
 
-		if (lava_tile_data):
-			erosion_audio_player.play()
-			take_damage(1)	
+			if (lava_tile_data):
+				erosion_audio_player.play()
+				take_damage(1)	
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
@@ -110,21 +113,19 @@ func _on_animation_finished(_anim_name: StringName):
 	is_animation_running = false
 	
 func spawn(pos):
-	position = pos
-	show()
-	health_changed.emit(health)
-	animation_player.play("Spawn")
-	await animation_player.animation_finished
-	state_machine.change_state(state_machine.states.get("IdleState"))
+	spawn_position = pos
+	state_machine.change_state(state_machine.states.get("SpawnState"))
 
 func take_damage(amount):
 	health -= amount
 	if health < 0:
-		position = Vector2(0, 0)
-		health = 100
-	health_changed.emit(health)
+		health_changed.emit(0)
+		kill()
+	else:
+		health_changed.emit(health)
 
 func kill():
+	is_dead = true
 	state_machine.change_state(state_machine.states.get("DieState"))
 
 func apply_gravity(delta: float):
@@ -293,10 +294,6 @@ func paralize(p : bool):
 	velocity.x = 0
 	velocity.y = 0
 	paralized = p
-	if paralized:
-		animation_player.pause()
-	else:
-		animation_player.play()
 
 func get_weapon_primary():
 	if not inventory.equipment.left_hand:

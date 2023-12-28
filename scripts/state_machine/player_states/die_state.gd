@@ -1,8 +1,16 @@
 class_name DieState
 extends State
 
-func process_input(_event: InputEvent) -> State:
-	return null
+func enter() -> void:
+	super()
+	parent.paralize(true)
 
 func process_physics(_delta: float) -> State:
-	return null
+	if parent.is_animation_running:
+		return null
+	return state_machine.states.get("SpawnState")
+
+func exit() -> void:
+	super()
+	parent.hide()
+	parent.paralize(false)
