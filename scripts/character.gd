@@ -34,6 +34,14 @@ extends CharacterBody2D
 @export_category("Inventory")
 @export var inventory : Inventory
 
+@export_category("Stats")
+@export var health_max : int = 200
+@export var health_start : int = 100
+@export var health : int = 100
+@export var armor_max : int = 200
+@export var armor_start : int = 100
+@export var armor : int = 100
+
 @export var lava_tilemap : TileMap
 
 @onready var jump_audio_player : AudioStreamPlayer = $JumpAudioPlayer
@@ -49,7 +57,6 @@ var direction : Vector2 = Vector2(1, 0)
 var velocity_modifier : Vector2 = Vector2(0, 0)
 var facing_direction : float = 1
 var paralized : bool = false
-var health = 100
 var weapons
 var spawn_position : Vector2
 var is_dead : bool = false
@@ -65,7 +72,8 @@ enum Abilities {
 	WallJump
 }
 
-signal health_changed(health: int)
+signal health_changed(health: int, max_health: int)
+signal armor_changed(armor: int, max_armor: int)
 
 func _ready():
 	hide()
@@ -74,6 +82,7 @@ func _ready():
 	state_machine.init(self)
 	animation_player.animation_started.connect(_on_animation_started)
 	animation_player.animation_finished.connect(_on_animation_finished)
+	PickupSignalBus.consume_event.connect(_on_consume)
 
 	weapons = get_tree().get_nodes_in_group("weapon")
 
@@ -85,6 +94,19 @@ func _ready():
 
 func _on_game_data_changed():
 	use_mouse = GameManager.game_data.use_mouse
+
+func _on_consume(_coords: Vector2, items: Array[Consumable]):
+	for item in items:
+		health += item.health
+		armor += item.armor
+		
+		if health > health_max:
+			health = health_max
+		if armor > armor_max:
+			armor = armor_max
+
+		health_changed.emit(health, health_start)
+		armor_changed.emit(armor, armor_start)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if paralized:
@@ -117,15 +139,26 @@ func spawn(pos):
 	state_machine.change_state(state_machine.states.get("SpawnState"))
 
 func take_damage(amount):
+	# If there is armor, take it from there
+	if armor > 0:
+		armor -= amount
+		armor_changed.emit(armor, armor_max)
+		return
+	
 	health -= amount
+
+	# Check for death
 	if health < 0:
-		health_changed.emit(0)
+		health_changed.emit(0, health_start)
 		kill()
-	else:
-		health_changed.emit(health)
+		return
+	
+	# Emit current health
+	health_changed.emit(health, health_start)
 
 func kill():
 	is_dead = true
+	inventory.unequip_all()
 	state_machine.change_state(state_machine.states.get("DieState"))
 
 func apply_gravity(delta: float):

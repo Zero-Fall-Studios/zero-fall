@@ -2,7 +2,7 @@
   {
     "id": "zc4hlxqfdlugubyemdqhugbp1",
     "name": "Grapple",
-    "is_unique": false,
+    "is_unique": true,
     "max_stack_amount": "1",
     "quantity": "1",
     "type": "Weapon",
@@ -11,7 +11,7 @@
   {
     "id": "zc4hlxqfdlugfbyemdqhugbp2",
     "name": "Handgun",
-    "is_unique": false,
+    "is_unique": true,
     "max_stack_amount": "1",
     "quantity": "1",
     "type": "Weapon",
@@ -20,7 +20,7 @@
   {
     "id": "zc4hlxqfdlugfbyemdqhugbp3",
     "name": "Wand",
-    "is_unique": false,
+    "is_unique": true,
     "max_stack_amount": "1",
     "quantity": "1",
     "type": "Weapon",
@@ -29,17 +29,23 @@
   {
     "id": "zc4hlxqfdlugfbyemdqhugbp4",
     "name": "Necklace",
-    "is_unique": false,
+    "is_unique": true,
     "max_stack_amount": "1",
     "quantity": "1",
-    "type": "Consumable"
+    "type": "Consumable",
+    "consume_on_pickup": true,
+    "health": 0,
+    "armor": 25
   },
   {
     "id": "zc4hlxqfdlugfbyemdqhugbp5",
     "name": "Shield",
-    "is_unique": false,
+    "is_unique": true,
     "max_stack_amount": "1",
     "quantity": "1",
-    "type": "Consumable"
+    "type": "Consumable",
+    "consume_on_pickup": true,
+    "health": 0,
+    "armor": 50
   }
 ]

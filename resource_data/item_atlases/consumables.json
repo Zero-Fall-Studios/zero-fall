@@ -1,0 +1,13 @@
+[
+  {
+    "id": "zc4hlxqfdlugfbyemdqhugbp51",
+    "name": "Apple",
+    "is_unique": false,
+    "max_stack_amount": "1",
+    "quantity": "1",
+    "type": "Consumable",
+    "consume_on_pickup": true,
+    "health": 10,
+    "armor": 0
+  }
+]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemAtlas" load_steps=3 format=3 uid="uid://deic20gb1c3ut"]
+
+[ext_resource type="Script" path="res://scripts/inventory/item_atlas.gd" id="1_e18xk"]
+[ext_resource type="Texture2D" uid="uid://cucx01evesmvw" path="res://assets/items/FruitAndVegetable.png" id="2_yn2gl"]
+
+[resource]
+script = ExtResource("1_e18xk")
+texture = ExtResource("2_yn2gl")
+json_src = "res://resource_data/item_atlases/consumables.json"
+interval = 16
+width = 8
+height = 5
+item_index = 0

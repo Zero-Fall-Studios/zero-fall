@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://h6kdqde30046"]
+[gd_scene load_steps=22 format=3 uid="uid://h6kdqde30046"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_d0nim"]
 [ext_resource type="Texture2D" uid="uid://g2vs3mhdm0h8" path="res://assets/background/Background.png" id="2_jqgpr"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bacc0kqeepab1" path="res://scripts/inventory/pickup.tscn" id="12_rlv35"]
 [ext_resource type="Resource" uid="uid://c82hjof2scyef" path="res://resource_data/item_atlases/items.tres" id="13_24pks"]
 [ext_resource type="Texture2D" uid="uid://0rwwny341kjg" path="res://assets/background/LightMask.png" id="15_qsa0o"]
+[ext_resource type="Resource" uid="uid://deic20gb1c3ut" path="res://resource_data/item_atlases/consumables.tres" id="16_bbl42"]
 [ext_resource type="Script" path="res://scripts/spawn_point.gd" id="16_vup5h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwaok"]
@@ -161,7 +162,7 @@ position_smoothing_enabled = true
 color = Color(0.501961, 0.501961, 0.501961, 1)
 
 [node name="WorldGenerator" parent="." instance=ExtResource("8_mncuo")]
-layer_0/tile_data = PackedInt32Array(589809, 262144, 5, 589810, 655360, 4, 589811, 655360, 4, 589812, 655360, 4, 589813, 655360, 4, 589814, 655360, 4, 589815, 655360, 4, 589816, 458752, 5, 655352, 720896, 6, 655351, 327680, 6, 655350, 589824, 7, 655349, 589824, 7, 655348, 589824, 7, 655347, 589824, 7, 655346, 393216, 6, 655345, 524288, 5, 720881, 524288, 5, 786417, 262144, 6, 851953, 0, 5, 720882, 720896, 6, 786418, 720896, 7, 720888, 720896, 6, 786424, 458752, 6, 851960, 0, 5, 720887, 524288, 5, 786423, 524288, 7, 917489, 0, 6, 917496, 0, 6, 524273, 0, 4, 524280, 0, 4)
+layer_0/tile_data = PackedInt32Array(589809, 262144, 5, 589810, 655360, 4, 589811, 655360, 4, 589812, 655360, 4, 589813, 655360, 4, 589814, 655360, 4, 589815, 655360, 4, 589816, 458752, 5, 655352, 720896, 6, 655351, 327680, 6, 655350, 589824, 7, 655349, 589824, 7, 655348, 589824, 7, 655347, 589824, 7, 655346, 393216, 6, 655345, 524288, 5, 720881, 524288, 5, 786417, 262144, 6, 851953, 0, 5, 720882, 720896, 6, 786418, 720896, 7, 720888, 720896, 6, 786424, 458752, 6, 851960, 0, 5, 720887, 524288, 5, 786423, 524288, 7, 917489, 0, 6, 917496, 0, 6, 524273, 0, 4, 524280, 0, 4, 524269, 720896, 4, 589805, 720896, 6, 655341, 720896, 7, 655340, 589824, 7, 655339, 589824, 7, 655338, 589824, 7, 655337, 589824, 7, 655336, 589824, 7, 655335, 589824, 7, 589799, 589824, 6, 589800, 589824, 6, 589801, 589824, 6, 589802, 589824, 6, 589803, 589824, 6, 589804, 589824, 6, 524268, 655360, 4, 524267, 655360, 4, 524266, 655360, 4, 524265, 655360, 4, 524264, 655360, 4, 524263, 655360, 4, 524262, 655360, 4, 524261, 655360, 4, 524260, 655360, 4, 524259, 655360, 4, 524258, 655360, 4, 589796, 589824, 6, 589797, 589824, 6, 589798, 589824, 6, 589795, 589824, 6, 589794, 589824, 6, 655330, 589824, 7, 655331, 589824, 7, 655332, 589824, 7, 655333, 589824, 7, 655334, 589824, 7, 655329, 589824, 7, 655328, 589824, 7, 655327, 589824, 7, 589791, 589824, 6, 524255, 655360, 4, 524256, 655360, 4, 524257, 655360, 4, 589793, 589824, 6, 589792, 589824, 6, 524254, 655360, 4, 524253, 655360, 4, 524252, 655360, 4, 589788, 589824, 6, 589787, 589824, 6, 589786, 524288, 5, 589789, 589824, 6, 589790, 589824, 6, 655325, 589824, 7, 655326, 589824, 7, 655324, 589824, 7, 655323, 589824, 7, 655322, 524288, 7, 524250, 524288, 4, 524251, 655360, 4)
 
 [node name="TileMapLava" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_1h5ax")
@@ -175,6 +176,8 @@ player = NodePath("../KungFury")
 
 [node name="KungFury" parent="." node_paths=PackedStringArray("lava_tilemap") instance=ExtResource("11_6ydke")]
 position = Vector2(-171, 108)
+health = 50
+armor = 50
 lava_tilemap = NodePath("../TileMapLava")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="KungFury"]
@@ -190,20 +193,48 @@ shadow_filter_smooth = 5.0
 texture = ExtResource("15_qsa0o")
 texture_scale = 4.73
 
-[node name="Pickup" parent="." instance=ExtResource("12_rlv35")]
-visible = true
+[node name="GrapplePickup" parent="." instance=ExtResource("12_rlv35")]
+visible = false
 position = Vector2(-229, 56)
 item_atlas = ExtResource("13_24pks")
 autospawn = true
 respawn_time = 5.0
 
-[node name="Pickup2" parent="." instance=ExtResource("12_rlv35")]
-visible = true
-position = Vector2(-119, 53)
+[node name="HandgunPickup" parent="." instance=ExtResource("12_rlv35")]
+visible = false
+position = Vector2(-324, 30)
 item_atlas = ExtResource("13_24pks")
 item_index = 1
 autospawn = true
 respawn_time = 10.0
+
+[node name="WandPickup" parent="." instance=ExtResource("12_rlv35")]
+visible = false
+position = Vector2(-367, 27)
+item_atlas = ExtResource("13_24pks")
+item_index = 2
+autospawn = true
+respawn_time = 10.0
+
+[node name="ApplePickup" parent="." instance=ExtResource("12_rlv35")]
+position = Vector2(-415, 26)
+item_atlas = ExtResource("16_bbl42")
+autospawn = true
+respawn_time = 1.0
+
+[node name="NecklacePickup" parent="." instance=ExtResource("12_rlv35")]
+position = Vector2(-465, 25)
+item_atlas = ExtResource("13_24pks")
+item_index = 3
+autospawn = true
+respawn_time = 1.0
+
+[node name="ShieldPickup" parent="." instance=ExtResource("12_rlv35")]
+position = Vector2(-507, 24)
+item_atlas = ExtResource("13_24pks")
+item_index = 4
+autospawn = true
+respawn_time = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5iqv1")

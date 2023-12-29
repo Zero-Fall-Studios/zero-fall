@@ -4,8 +4,10 @@ extends State
 func enter() -> void:
 	parent.is_dead = false
 	parent.position = parent.spawn_position
-	parent.health = 100
-	parent.health_changed.emit(parent.health)
+	parent.health = parent.health_start
+	parent.health_changed.emit(parent.health, parent.health_start)
+	parent.armor = parent.armor_start
+	parent.armor_changed.emit(parent.armor, parent.armor_start)
 	parent.show()
 	super()
 

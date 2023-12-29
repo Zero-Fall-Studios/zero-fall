@@ -15,6 +15,9 @@ func get_item_at_index(index: int) -> Item:
 	if items != null and items.size() == 0:
 		items = ItemAtlas.create_items(self)
 		
+	if not items:
+		return null
+
 	if items[index]:
 		return items[index]
 	
@@ -41,6 +44,7 @@ static func create_items(item_atlas: ItemAtlas):
 						money.id = item.id
 						money.name = item.name
 						money.texture = atlas
+						money.is_unique = item.is_unique
 						items_to_create.append(money)
 					"Weapon":
 						var weapon = Weapon.new()
@@ -48,12 +52,17 @@ static func create_items(item_atlas: ItemAtlas):
 						weapon.name = item.name
 						weapon.texture = atlas
 						weapon.state_name = item.state_name
+						weapon.is_unique = item.is_unique
 						items_to_create.append(weapon)
 					"Consumable":
 						var consumable = Consumable.new()
 						consumable.id = item.id
 						consumable.name = item.name
 						consumable.texture = atlas
+						consumable.is_unique = item.is_unique
+						consumable.consume_on_pickup = item.consume_on_pickup
+						consumable.health = item.health
+						consumable.armor = item.armor
 						items_to_create.append(consumable)
 
 		else:

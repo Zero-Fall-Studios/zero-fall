@@ -17,10 +17,12 @@ class_name Pickup
 @export var random_item_on_pickup: bool = false
 @export var pickup_on_collision: bool = true
 @export var pickup_with_mouse_click: bool = true
+@export var audio: AudioStreamPlayer2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var is_mouse_over = false
 var center : Vector2
@@ -51,9 +53,16 @@ func _on_input_event(_viewport, _event, _shape_idx):
 		_pickup_handler(get_global_mouse_position())
 	
 func _pickup_handler(coords : Vector2):
+	audio.play()
 	var items: Array[Item] = [item]
 
-	PickupSignalBus.pickup_event.emit(coords, items)
+	if item is Consumable:
+		var consumable = item as Consumable
+		if consumable.consume_on_pickup:
+			var consumables : Array[Consumable] = [consumable]
+			PickupSignalBus.consume_event.emit(coords, consumables)
+	else:
+		PickupSignalBus.pickup_event.emit(coords, items)
 			
 	hide()
 	collision_shape.disabled = true
@@ -88,5 +97,6 @@ func _set_pickup_texture():
 
 func _spawn():
 	show()
+	animation_player.play("Idle")
 	collision_shape.disabled = false
 	spawn_timer.stop()

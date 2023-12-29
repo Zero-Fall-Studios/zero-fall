@@ -1,13 +1,98 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv7mdsgemimiq"]
+[gd_scene load_steps=6 format=3 uid="uid://dv7mdsgemimiq"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_i0xur"]
+[ext_resource type="Texture2D" uid="uid://c2emrnwbla0u2" path="res://assets/player/KungFury-16x16-Sheet.png" id="2_dteld"]
+[ext_resource type="Texture2D" uid="uid://whhs073cfrgg" path="res://assets/ui/InventorySlot.png" id="3_ucq6r"]
 
-[node name="UI" type="CanvasLayer"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6romm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd65m"]
+atlas = ExtResource("2_dteld")
+region = Rect2(0, 0, 16, 16)
+
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("label_health", "label_armor", "left_hand", "right_hand", "left_bar", "right_bar")]
 script = ExtResource("1_i0xur")
+label_health = NodePath("Panel/LabelHealth")
+label_armor = NodePath("Panel/LabelArmor")
+left_hand = NodePath("Panel/TextureRect4/LeftHand")
+right_hand = NodePath("Panel/TextureRect2/RightHand")
+left_bar = NodePath("Panel/ColorRect")
+right_bar = NodePath("Panel/ColorRect2")
 
-[node name="LabelHealth" type="Label" parent="."]
-offset_left = 6.0
-offset_top = 1.0
-offset_right = 46.0
-offset_bottom = 24.0
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.0
+offset_top = 2.0
+offset_right = 51.0
+offset_bottom = 42.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6romm")
+
+[node name="LabelHealth" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 8.0
+offset_right = 19.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 text = "100"
+
+[node name="TextureRect4" type="TextureRect" parent="Panel"]
+layout_mode = 2
+offset_left = 24.0
+offset_right = 40.0
+offset_bottom = 16.0
+texture = ExtResource("3_ucq6r")
+
+[node name="LeftHand" type="TextureRect" parent="Panel/TextureRect4"]
+layout_mode = 2
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Panel"]
+layout_mode = 2
+offset_left = 43.0
+offset_top = -1.0
+offset_right = 59.0
+offset_bottom = 15.0
+texture = SubResource("AtlasTexture_dd65m")
+
+[node name="TextureRect2" type="TextureRect" parent="Panel"]
+layout_mode = 2
+offset_left = 62.0
+offset_right = 78.0
+offset_bottom = 16.0
+texture = ExtResource("3_ucq6r")
+
+[node name="RightHand" type="TextureRect" parent="Panel/TextureRect2"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="LabelArmor" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 83.0
+offset_right = 94.0
+offset_bottom = 16.0
+text = "100
+"
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 12.0
+offset_right = 21.0
+offset_bottom = 15.0
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 12.0
+offset_right = 96.0
+offset_bottom = 15.0
+color = Color(0, 0.666667, 1, 1)

@@ -22,28 +22,28 @@ func _on_pickup_event(_coords: Vector2, new_items: Array[Item]):
 	
 func get_size():
 	return items.size()
+
+func unequip_all():
+	equipment.unequip(Equipment.EquipmentSlotType.LeftHand)
+	equipment.unequip(Equipment.EquipmentSlotType.RightHand)
 	
-func add(coords: Vector2, new_items: Array[Item]):	
+func add(_coords: Vector2, new_items: Array[Item]):	
 	for item in new_items:
 		
 		var _item = item.duplicate()
+
+		if _item.is_unique and (in_inventory(_item) or in_equipment(_item)):
+			continue
 		
 		if _item is Equipable:
 			var equipable = _item as Equipable
 			if equipment.left_hand == null:
-				print("Equip left hand")
 				equipment.left_hand = equipable
-				equipable.equip(coords)
+				equipment.equip(equipable, Equipment.EquipmentSlotType.LeftHand)
 				continue
 			elif equipment.right_hand == null:
-				print("Equip right hand")
 				equipment.right_hand = equipable
-				equipable.equip(coords)
-				continue
-		elif _item is Consumable:
-			var consumable = _item as Consumable
-			if consumable.consume_on_pickup:
-				consumable.consume(coords)
+				equipment.equip(equipable, Equipment.EquipmentSlotType.RightHand)
 				continue
 		elif _item is Money:
 			var m = _item as Money
@@ -55,14 +55,10 @@ func add(coords: Vector2, new_items: Array[Item]):
 		# The bad side of this will make the in_inventory function not work
 		# since its checking the actual object and not some id
 		
-		if in_inventory(_item) and _item.is_unique:
-			print("Item is unique")
-			return
-			
-		if in_inventory(_item) and _item.is_stackable and _item.quantity < _item.max_stackable_count:
-			print("Add quantity")
-			add_quantity(_item, _item.quantity)
-			return
+		# if _item.is_stackable and in_inventory(_item) and _item.quantity < _item.max_stackable_count:
+		# 	print("Add quantity")
+		# 	add_quantity(_item, _item.quantity)
+		# 	return
 
 		var next_slot = get_next_available_slot()
 		if next_slot >= 0:
@@ -80,7 +76,14 @@ func add_quantity(item: Item, amount: int):
 	
 func add_money(amount: int):
 	money += amount
-	
+
+func in_equipment(item: Item):
+	if equipment.left_hand and equipment.left_hand.id == item.id:
+		return true
+	if equipment.right_hand and equipment.right_hand.id == item.id:
+		return true
+	return false
+
 func in_inventory(item: Item):
 	if item == null:
 		return false

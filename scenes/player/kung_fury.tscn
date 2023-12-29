@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://darg1w8l3n8cw"]
+[gd_scene load_steps=46 format=3 uid="uid://darg1w8l3n8cw"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_tm4rn"]
 [ext_resource type="Resource" uid="uid://5ty56lylab6q" path="res://resource_data/inventory.tres" id="2_05kkw"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://4srng378fmhb" path="res://assets/audio/jump.wav" id="6_lvkt7"]
 [ext_resource type="AudioStream" uid="uid://b3p1sb241tuu5" path="res://assets/audio/explosion.wav" id="7_xy72q"]
 [ext_resource type="AudioStream" uid="uid://b1xvg7mi8vtlb" path="res://assets/audio/click.wav" id="8_71iah"]
+[ext_resource type="AudioStream" uid="uid://dwyi1rni50hr2" path="res://assets/audio/Hit Laser.wav" id="8_jejpi"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="9_4xkfp"]
 [ext_resource type="AudioStream" uid="uid://c1ac2882ia44e" path="res://assets/audio/erosion.wav" id="9_30ump"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/spawn_state.gd" id="10_8tauh"]
@@ -24,6 +25,8 @@
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/grapple_state.gd" id="20_fkiyg"]
 [ext_resource type="PackedScene" uid="uid://dfijt5s44i68t" path="res://scenes/projectiles/bullet.tscn" id="21_m06pa"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/die_state.gd" id="22_s3rt3"]
+[ext_resource type="Script" path="res://scripts/state_machine/player_states/wand_state.gd" id="23_r76j1"]
+[ext_resource type="PackedScene" uid="uid://bsypeg78n3aan" path="res://scenes/projectiles/power_blast.tscn" id="24_ee2sj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8wdf"]
 size = Vector2(6, 21)
@@ -34,6 +37,22 @@ shader_parameter/progress = 0.0
 shader_parameter/noise_desnity = 60.0
 shader_parameter/beam_size = 0.15
 shader_parameter/color = Vector4(0, 1.02, 1.2, 1)
+
+[sub_resource type="Animation" id="Animation_inhm0"]
+resource_name = "Die"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_ouvh7"]
 resource_name = "DownThrust"
@@ -266,22 +285,6 @@ tracks/0/keys = {
 "values": [2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_inhm0"]
-resource_name = "Die"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_42iyb"]
 _data = {
 "Die": SubResource("Animation_inhm0"),
@@ -346,6 +349,10 @@ volume_db = -20.057
 stream = ExtResource("7_xy72q")
 volume_db = -15.6
 
+[node name="WandAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jejpi")
+volume_db = -13.371
+
 [node name="LandAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_71iah")
 volume_db = -20.057
@@ -409,9 +416,18 @@ audio_player = NodePath("../../ShootAudioPlayer")
 script = ExtResource("22_s3rt3")
 animation_name = "Die"
 
+[node name="WandState" type="Node" parent="StateMachine" node_paths=PackedStringArray("muzzle", "audio_player")]
+script = ExtResource("23_r76j1")
+Bullet = ExtResource("24_ee2sj")
+muzzle = NodePath("../../Muzzle")
+animation_name = "ShootRight"
+audio_player = NodePath("../../WandAudioPlayer")
+
 [node name="Controls" type="Node" parent="."]
 script = ExtResource("15_g26ov")
 
 [node name="Grapple" parent="." instance=ExtResource("19_280mi")]
 
 [node name="Handgun" type="Node" parent="." groups=["weapon"]]
+
+[node name="Wand" type="Node" parent="." groups=["weapon"]]
